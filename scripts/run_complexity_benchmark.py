@@ -110,4 +110,4 @@ def run_benchmark(config_path):
     print(f"\nSaved benchmark results to {out_file}")
 
 if __name__ == "__main__":
-    run_benchmark("experiments/configs/complexity_regimes_v1.json")
+    import sys; run_benchmark(sys.argv[1] if len(sys.argv) > 1 else "experiments/configs/complexity_regimes_v1.json")

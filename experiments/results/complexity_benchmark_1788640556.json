@@ -1,0 +1,122 @@
+{
+    "metadata": {
+        "benchmark_name": "complexity_regimes_v2_canonical",
+        "description": "Validation of R1 vs R3 correlation effect at canonical 100-iteration budget.",
+        "seeds": [
+            42,
+            123
+        ],
+        "n_samples": 150,
+        "regimes": [
+            "R1_SIMPLE",
+            "R3_CORRELATED"
+        ],
+        "models": [
+            "svm",
+            "vqc"
+        ],
+        "quantum_config": {
+            "n_qubits": 6,
+            "n_layers": 3,
+            "loss_fn": "mse",
+            "iterations": 100,
+            "learning_rate": 0.05
+        }
+    },
+    "regime_profiles": {
+        "R1_SIMPLE": {
+            "42": {
+                "n_samples": 150,
+                "n_features": 10,
+                "class_balance_pos_ratio": 0.5,
+                "mean_abs_feature_correlation": 0.10787939653061096,
+                "linear_separability_score": 1.0
+            },
+            "123": {
+                "n_samples": 150,
+                "n_features": 10,
+                "class_balance_pos_ratio": 0.5,
+                "mean_abs_feature_correlation": 0.1004467563940491,
+                "linear_separability_score": 1.0
+            }
+        },
+        "R3_CORRELATED": {
+            "42": {
+                "n_samples": 150,
+                "n_features": 10,
+                "class_balance_pos_ratio": 0.5,
+                "mean_abs_feature_correlation": 0.46692157060062506,
+                "linear_separability_score": 0.8666666666666668
+            },
+            "123": {
+                "n_samples": 150,
+                "n_features": 10,
+                "class_balance_pos_ratio": 0.5133333333333333,
+                "mean_abs_feature_correlation": 0.4590117877594198,
+                "linear_separability_score": 0.7333333333333334
+            }
+        }
+    },
+    "benchmark": {
+        "R1_SIMPLE": {
+            "svm": {
+                "42": {
+                    "accuracy": 0.96,
+                    "roc_auc": 0.9982222222222223,
+                    "f1": 0.9598809523809525,
+                    "training_time_s": 0.03131117820739746
+                },
+                "123": {
+                    "accuracy": 0.96,
+                    "roc_auc": 0.9946666666666667,
+                    "f1": 0.9604152762328514,
+                    "training_time_s": 0.01100163459777832
+                }
+            },
+            "vqc": {
+                "42": {
+                    "accuracy": 0.5933333333333333,
+                    "roc_auc": 0.5928888888888888,
+                    "f1": 0.6126022377805405,
+                    "training_time_s": 69.4040479183197
+                },
+                "123": {
+                    "accuracy": 0.5133333333333334,
+                    "roc_auc": 0.5653333333333334,
+                    "f1": 0.5607843137254902,
+                    "training_time_s": 78.20022082328796
+                }
+            }
+        },
+        "R3_CORRELATED": {
+            "svm": {
+                "42": {
+                    "accuracy": 0.9066666666666666,
+                    "roc_auc": 0.9786666666666667,
+                    "f1": 0.9120087976539588,
+                    "training_time_s": 0.015937614440917968
+                },
+                "123": {
+                    "accuracy": 0.8600000000000001,
+                    "roc_auc": 0.9092103174603174,
+                    "f1": 0.8535741652983033,
+                    "training_time_s": 0.01288743019104004
+                }
+            },
+            "vqc": {
+                "42": {
+                    "accuracy": 0.7333333333333333,
+                    "roc_auc": 0.8115555555555556,
+                    "f1": 0.7318634461571059,
+                    "training_time_s": 70.03178930282593
+                },
+                "123": {
+                    "accuracy": 0.7533333333333333,
+                    "roc_auc": 0.8316150793650794,
+                    "f1": 0.7680799592564298,
+                    "training_time_s": 84.6455807685852
+                }
+            }
+        }
+    }
+}
