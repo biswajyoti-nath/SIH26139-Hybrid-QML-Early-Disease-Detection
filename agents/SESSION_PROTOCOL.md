@@ -152,7 +152,7 @@ uv add <package_name>
 | Classical ML | T-030–T-032 | ClassicalModelEngine, EvaluationEngine, first experiment |
 | Quantum ML | T-040–T-042 | QuantumEngine, PennyLane VQC, VQC experiment |
 | Explainability | T-050–T-051 | SHAP classical + VQC attribution |
-| Runner + Store | T-060–T-061A | ExperimentRunner, ResultsStore |
+| Runner + Store | T-060A–T-061A | ExperimentRunner, ResultsStore |
 | API | T-070 | FastAPI |
 | Frontend | T-080–T-084 | React dashboard |
 | Integration | T-090–T-092 | Docker, demo, cache |

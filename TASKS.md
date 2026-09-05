@@ -208,7 +208,7 @@
 
 ## Phase 6 — Experiment Runner + Results Store
 
-### T-060: ExperimentRunner — orchestration
+### T-060A: ExperimentRunner — orchestration
 - **Priority:** P1
 - **Status:** VERIFIED
 - **Dependencies:** T-021, T-031, T-041, T-050
@@ -223,7 +223,7 @@
 ### T-061A: ResultsStore — JSON persistence
 - **Priority:** P1
 - **Status:** VERIFIED
-- **Dependencies:** T-060
+- **Dependencies:** T-060A
 - **Expected output:**
   - `backend/core/results_store.py` — `ResultsStore`
   - `save(result)` → creates `experiments/results/<exp_id>.json`
@@ -238,7 +238,7 @@
 ### T-070: FastAPI application
 - **Priority:** P2
 - **Status:** VERIFIED
-- **Dependencies:** T-060, T-061A
+- **Dependencies:** T-060A, T-061A
 - **Expected output:**
   - `backend/api/main.py` with all endpoints from `docs/SOFTWARE_ARCHITECTURE.md §3.9`
   - Endpoints: POST /api/experiments, GET /api/experiments/{id}, GET /api/experiments, GET /api/datasets
