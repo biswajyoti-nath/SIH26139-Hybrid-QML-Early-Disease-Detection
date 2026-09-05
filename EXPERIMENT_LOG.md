@@ -49,3 +49,5 @@
 | 2026-09-05 | exp_002_cv_baseline | svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_002_cv_baseline_*.json |
 | 2026-09-05 | exp_002_cv_baseline | svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_002_cv_baseline_*.json |
 | 2026-09-05 | exp_003_vqc_smoke | vqc, svm | seed=42 | See exp_003_vqc_smoke_*.json |
+| 2026-09-05 | exp_004_vqc_baseline | svm, random_forest, xgboost, vqc | seed=42 | See exp_004_vqc_baseline_*.json |
+| 2026-09-05 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |

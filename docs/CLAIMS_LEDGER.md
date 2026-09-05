@@ -193,3 +193,10 @@ Every claim MUST be assigned one of the following classes:
 - **Evidence:** None yet.
 - **Classification:** FUTURE WORK
 - **Constraint:** DO NOT CLAIM. Current metrics represent untuned smoke tests or classical simulations. Real advantage requires detailed benchmarks against the CLAIM_002 reference baseline (97.3%).
+
+### CLAIM_005: Untuned VQC Underperforms Strong Classical Baselines
+- **Claim:** A standard un-tuned PennyLane VQC (8-qubits, 3 layers, 50 iterations) achieves only ~60.8% ROC-AUC on WDBC, heavily trailing classical SVM (99.7% ROC-AUC).
+- **Source:** OUR EXPERIMENT (exp_004_vqc_baseline)
+- **Evidence:** 80/20 stratified holdout comparison using identical PCA components.
+- **Classification:** OUR EXPERIMENT
+- **Constraint:** This establishes that raw injection of data into a variational circuit does not yield automatic advantages. Extensive hyperparameter tuning, loss function redesign (e.g., cross-entropy), or advanced feature maps are necessary to close the gap.

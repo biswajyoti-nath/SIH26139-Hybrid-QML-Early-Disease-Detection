@@ -21,19 +21,8 @@
 ## Category 1 — Environment and Infrastructure
 
 ### Q1.1 — Python 3.14 Package Compatibility
-**Priority:** 🔴 CRITICAL
 
-The installed Python version is 3.14.4. Key quantum packages (PennyLane, Qiskit, qiskit-machine-learning) officially support Python 3.10–3.13. Python 3.14 support is unknown or unconfirmed.
-
-**Resolution required:**
-- Attempt `pip install pennylane` in a Python 3.14 environment.
-- Attempt `pip install qiskit qiskit-aer qiskit-machine-learning` in a Python 3.14 environment.
-- If either fails: create a Python 3.12 virtual environment and use that.
-- **If Python 3.14 is incompatible**, use Python 3.12 via `python3.12 -m venv` or Docker.
-
-**Decision gate:** Cannot write any quantum code until this is resolved.
-
----
+**RESOLVED:** Python 3.12.13 has been explicitly locked using `uv`. Python 3.14 is skipped to guarantee compatibility with PennyLane 0.45.1 and XGBoost.
 
 ### Q1.2 — Virtual Environment Strategy
 **Priority:** 🔴 CRITICAL

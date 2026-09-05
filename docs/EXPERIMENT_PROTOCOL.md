@@ -204,7 +204,7 @@ The following parameters are **experiment variables** — they must be selected 
 | Framework | PennyLane / Qiskit ML | Yes |
 | n_qubits | 5, 8, 10 | Yes (equals PCA n_components) |
 | Feature encoding | AngleEmbedding / ZZFeatureMap | Yes |
-| Ansatz | RealAmplitudes / TwoLocal | Yes |
+| Ansatz | RealAmplitudes (via BasicEntanglerLayers) | Yes |
 | n_layers | 3, 5 | Yes |
 | Optimizer | COBYLA / SPSA / Adam | Yes |
 | Learning rate | 0.01, 0.1 (if Adam) | Yes |
@@ -313,7 +313,7 @@ Every experiment run must produce a metadata record. Minimum schema:
       "pennylane_version": "0.40.0",
       "n_qubits": 8,
       "encoding": "AngleEmbedding",
-      "ansatz": "RealAmplitudes",
+      "ansatz": "RealAmplitudes (qml.RY)",
       "n_layers": 3,
       "optimizer": "Adam",
       "learning_rate": 0.01,

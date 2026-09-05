@@ -47,11 +47,11 @@ We have standardized on `uv` for all Python environment and dependency managemen
 |---|---|
 | Current latest version | ~0.45.0 (pennylane-lightning 0.45.x) |
 | Python support | 3.11, 3.12, 3.13 (3.10 dropped) |
-| Python 3.14 support | UNKNOWN — likely not yet officially supported |
+| Python 3.14 support | RESOLVED: Python 3.12 is explicitly used via uv. |
 | Recommended version | 0.40+ (stable, Python 3.12 compatible) |
 | Simulator backend | `lightning.qubit` (C++-accelerated, fast) |
 | ML integration | Native: `qml.qnode`, `qml.grad`; supports PyTorch, JAX, NumPy |
-| VQC support | Yes — `qml.qnode` + `qml.BasisEmbedding`, `qml.AngleEmbedding`, `qml.RealAmplitudes` |
+| VQC support | Yes — `qml.qnode` + `qml.BasisEmbedding`, `qml.AngleEmbedding`, `qml.BasicEntanglerLayers(rotation=qml.RY)` |
 | QSVM support | Via quantum kernel functions |
 | License | Apache 2.0 |
 | Maintainer | Xanadu |
@@ -87,7 +87,7 @@ We have standardized on `uv` for all Python environment and dependency managemen
 **Pros:**
 - Pre-built `VQC` class with configurable feature maps and ansatze.
 - `ZZFeatureMap` (from Havlíček et al.) built-in.
-- `RealAmplitudes` ansatz built-in.
+- `BasicEntanglerLayers` mapped to RealAmplitudes conceptually.
 - Good integration with scikit-learn interface.
 - IBM Quantum hardware access when needed.
 

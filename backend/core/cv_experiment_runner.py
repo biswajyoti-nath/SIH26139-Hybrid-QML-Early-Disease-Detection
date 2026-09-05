@@ -80,6 +80,8 @@ class CVExperimentRunner:
                 else:
                     y_pred_proba = None
                     
+                if hasattr(model, "history_"):
+                    metrics["history"] = model.history_
                 metrics = EvaluationEngine.evaluate(y_test, y_pred, y_pred_proba)
                 metrics["training_time_s"] = train_time
                 metrics["inference_time_s"] = inf_time

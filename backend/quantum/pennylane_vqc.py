@@ -1,6 +1,7 @@
 import pennylane.numpy as np
 import numpy as std_np
 import pennylane as qml
+import time
 
 class PennyLaneVQC:
     """
@@ -11,7 +12,7 @@ class PennyLaneVQC:
         self, 
         n_qubits: int = 8, 
         n_layers: int = 3, 
-        learning_rate: float = 0.1, 
+        learning_rate: float = 0.05, 
         iterations: int = 50,
         random_state: int = 42
     ):
@@ -20,6 +21,7 @@ class PennyLaneVQC:
         self.learning_rate = learning_rate
         self.iterations = iterations
         self.random_state = random_state
+        self.history_ = []
         
         np.random.seed(self.random_state)
         self.weights = np.random.uniform(
@@ -30,8 +32,10 @@ class PennyLaneVQC:
         
         @qml.qnode(self.dev, interface="autograd")
         def _circuit(weights, x):
-            qml.AngleEmbedding(x, wires=range(self.n_qubits))
-            qml.BasicEntanglerLayers(weights, wires=range(self.n_qubits))
+            # AngleEmbedding defaults to rotation='X', which is standard
+            qml.AngleEmbedding(x, wires=range(self.n_qubits), rotation='X')
+            # Using RY effectively matches Qiskit's RealAmplitudes conceptually
+            qml.BasicEntanglerLayers(weights, wires=range(self.n_qubits), rotation=qml.RY)
             return qml.expval(qml.PauliZ(0))
             
         self.circuit = _circuit
@@ -47,6 +51,7 @@ class PennyLaneVQC:
         
     def fit(self, X, y):
         np.random.seed(self.random_state)
+        self.history_ = []
         
         X_ag = np.array(X, requires_grad=False)
         y_ag = np.array(y, requires_grad=False)
@@ -55,14 +60,19 @@ class PennyLaneVQC:
             return self._cost(w, X_ag, y_ag)
             
         for it in range(self.iterations):
-            # step() returns the updated weights. It is NOT a tuple when only 1 arg is passed.
             self.weights = self.opt.step(cost_wrapper, self.weights)
+            # Evaluate loss strictly for logging
+            loss = float(self._cost(self.weights, X_ag, y_ag))
+            self.history_.append(loss)
             
         return self
         
     def predict_proba(self, X) -> std_np.ndarray:
         probas = [self._forward(self.weights, np.array(x, requires_grad=False)) for x in X]
         probas = std_np.array([float(p) for p in probas])
+        
+        # Clip just in case numerical errors push values slightly outside [0,1]
+        probas = std_np.clip(probas, 0.0, 1.0)
         return std_np.vstack([1.0 - probas, probas]).T
         
     def predict(self, X) -> std_np.ndarray:

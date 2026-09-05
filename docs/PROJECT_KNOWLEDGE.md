@@ -184,7 +184,7 @@ Classical optimizer updates parameters
 
 - **PennyLane** preferred: native ML integration, supports PyTorch/JAX autodiff.
 - **Qiskit Machine Learning** (≥0.8, requires Qiskit ≥1.0): VQC class available, migrated to Qiskit 2.x.
-- **Python 3.14 compatibility is a critical unknown** — must be verified before framework choice is finalized.
+- **Python 3.12 has been enforced via uv to avoid 3.14 incompatibility** — must be verified before framework choice is finalized.
 
 ---
 
@@ -338,7 +338,7 @@ Step 11: Verdict — did quantum improve the primary metric?
 | SHAP limitation for quantum | Attribution only at input level |
 | No clinical validation | Cannot claim diagnostic improvement |
 | WDBC class imbalance (62.7% benign) | Accuracy alone is misleading |
-| Python 3.14 environment | Critical: quantum packages may not support Python 3.14 |
+| Python 3.12 environment | Critical: quantum packages may not support Python 3.14 |
 
 ---
 

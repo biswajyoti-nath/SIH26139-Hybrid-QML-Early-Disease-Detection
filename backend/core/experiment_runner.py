@@ -76,6 +76,7 @@ class ExperimentRunner:
             metrics["inference_time_s"] = inference_time
             
             results_out["results"][model_name] = {
+                "history": getattr(model, "history_", []),
                 "hyperparameters": model_params,
                 "metrics": metrics
             }
