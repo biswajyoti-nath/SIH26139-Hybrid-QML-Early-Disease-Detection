@@ -42,7 +42,7 @@
 
 ### T-011: Backend project skeleton
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-010
 - **Expected output:** `backend/` directory with module structure matching `docs/SOFTWARE_ARCHITECTURE.md`; empty `__init__.py` files; importable from root
 - **Verification:** `python -c "from backend.core import dataset_manager"` exits 0
@@ -60,7 +60,7 @@
 
 ### T-020: DatasetManager — WDBC loader
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-011
 - **Expected output:**
   - `backend/core/dataset_manager.py` — `DatasetManager` class
@@ -74,7 +74,7 @@
 
 ### T-021: PreprocessingEngine — leakage-safe scaler + PCA
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-020
 - **Expected output:**
   - `backend/core/preprocessing_engine.py` — `PreprocessingEngine` class
@@ -93,7 +93,7 @@
 
 ### T-030: ClassicalModelEngine — SVM, RF, XGBoost
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-021
 - **Expected output:**
   - `backend/core/classical_engine.py` — `ClassicalModelEngine` class
@@ -107,7 +107,7 @@
 
 ### T-031: EvaluationEngine — metrics computation
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-030
 - **Expected output:**
   - `backend/core/evaluation_engine.py` — `EvaluationEngine` class
@@ -120,7 +120,7 @@
 
 ### T-032: First classical baseline experiment
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-030, T-031
 - **Expected output:**
   - Experiment config saved to `experiments/configs/exp_001_classical_baseline.json`
@@ -210,7 +210,7 @@
 
 ### T-060: ExperimentRunner — orchestration
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-021, T-031, T-041, T-050
 - **Expected output:**
   - `backend/core/experiment_runner.py` — `ExperimentRunner`
@@ -222,7 +222,7 @@
 
 ### T-061: ResultsStore — JSON persistence
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-060
 - **Expected output:**
   - `backend/core/results_store.py` — `ResultsStore`

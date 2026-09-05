@@ -173,3 +173,10 @@
 - "This will improve cancer diagnosis..."
 - "Quantum is faster..."
 - "X% accuracy" (without our own experimental data)
+
+### CLAIM_002: Classical Baselines are Extremely Strong on WDBC
+- **Claim:** Standard classical models (SVM, RF, XGBoost) achieve >95% accuracy and F1 on WDBC (8 PCA components).
+- **Source:** OUR EXPERIMENT (exp_002_cv_baseline)
+- **Evidence:** 5-fold CV shows SVM achieves 97.3% accuracy, 96.4% F1, and 99.4% ROC-AUC.
+- **Classification:** C (Verified Fact - Internal)
+- **Constraint:** This sets an extremely high bar for any quantum advantage claims. VQC must be benchmarked against this exact 97.3% accuracy ceiling to claim "improvement".

@@ -7,8 +7,10 @@ requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.141.1",
     "numpy>=2.3.5",
+    "pandas>=3.0.5",
     "pennylane>=0.45.1",
     "pennylane-lightning>=0.45.0",
+    "pydantic>=2.13.5",
     "scikit-learn>=1.9.0",
     "shap>=0.52.0",
     "uvicorn>=0.52.4",

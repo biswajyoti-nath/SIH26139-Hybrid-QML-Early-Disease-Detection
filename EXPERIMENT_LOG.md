@@ -40,3 +40,6 @@
 | Exp ID | Date | Models | Best F1 | VQC F1 | Verdict | Status |
 |---|---|---|---|---|---|---|
 | (none yet) | — | — | — | — | — | — |
+| 2026-09-05 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
+| 2026-09-05 | exp_001_controlled_pilot | svm, random_forest, xgboost | seed=42 | See exp_001_controlled_pilot_*.json |
+| 2026-09-05 | exp_002_cv_baseline | svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_002_cv_baseline_*.json |
