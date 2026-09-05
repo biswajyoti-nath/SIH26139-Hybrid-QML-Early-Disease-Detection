@@ -220,7 +220,7 @@
   - Computes verdict
 - **Verification:** Re-running same config ID → identical results
 
-### T-061: ResultsStore — JSON persistence
+### T-061A: ResultsStore — JSON persistence
 - **Priority:** P1
 - **Status:** VERIFIED
 - **Dependencies:** T-060
@@ -238,7 +238,7 @@
 ### T-070: FastAPI application
 - **Priority:** P2
 - **Status:** VERIFIED
-- **Dependencies:** T-060, T-061
+- **Dependencies:** T-060, T-061A
 - **Expected output:**
   - `backend/api/main.py` with all endpoints from `docs/SOFTWARE_ARCHITECTURE.md §3.9`
   - Endpoints: POST /api/experiments, GET /api/experiments/{id}, GET /api/experiments, GET /api/datasets
