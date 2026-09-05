@@ -1,0 +1,1 @@
+{"nodes": [{"id": "pennylane", "label": "PennyLane", "file_type": "concept", "source_file": "docs/TECH_STACK.md", "rationale": "Primary quantum framework selected for ML-native interface."}], "edges": [], "hyperedges": []}
