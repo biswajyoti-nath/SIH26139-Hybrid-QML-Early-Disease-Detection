@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env
+
+# Environment variables / secrets
+.env.local
+.env.production
+*.env
+secrets.json
+credentials.json
+
+# Node / Frontend
+node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+.npm/
+
+# IDEs / editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+*.log
+
+# Large binary / generated files
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+*.onnx
+docs/Team-Chai-EXE.pdf
+docs/Team-Chai-EXE.pptx
+
+# Experiment artifacts that should not be in git (large)
+experiments/artifacts/*.png
+experiments/artifacts/*.pdf
+experiments/logs/*.log
+
+# Keep these in git (small, important)
+!experiments/configs/
+!experiments/results/
+!experiments/.gitkeep
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# OS
+.DS_Store
+*.bak
