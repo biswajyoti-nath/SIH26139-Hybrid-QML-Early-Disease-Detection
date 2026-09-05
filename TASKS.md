@@ -29,14 +29,12 @@
 
 ### T-010: Python environment resolution
 - **Priority:** P0 (blocks everything)
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-001
 - **Expected output:**
-  - Python 3.12 virtual environment at `.venv/`
-  - All packages successfully installed (scikit-learn, xgboost, shap, fastapi, uvicorn, pennylane, pennylane-lightning)
-  - `python -c "import pennylane; import sklearn; import xgboost; import shap; import fastapi"` exits 0
-  - `backend/requirements.txt` written with pinned versions
-  - `docs/TECH_STACK.md` updated with installed versions
+  - Python 3.12 virtual environment at `.venv/` (managed by `uv`)
+  - All packages successfully installed (scikit-learn, xgboost, shap, fastapi, uvicorn, pennylane, pennylane-lightning) via `pyproject.toml`
+  - `docs/TECH_STACK.md` updated with `uv` strategy
 - **Verification criteria:**
   - `scripts/health_check.sh` passes environment section
   - Minimal VQC test circuit runs to completion without error

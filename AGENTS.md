@@ -204,9 +204,11 @@ These rules are permanent regardless of what phase we are in:
 
 ## 7. Environment Rules
 
-- **Use Python 3.12** (not 3.14 — quantum packages may not support 3.14 yet).
-- Virtual environment lives in `.venv/` (gitignored).
-- Activate: `source .venv/bin/activate`
-- Install: `pip install -r backend/requirements.txt`
-- Check environment: `scripts/health_check.sh`
-- Record all package versions in `TECH_STACK.md` after install.
+- **Use Python 3.12** (managed by `uv`).
+- **Use `uv`** as the canonical package and environment manager.
+- **Do not use pip directly.** Do not commit `.venv`.
+- Install dependencies: `uv add <package>` (or `uv add --dev <package>`).
+- Sync environment: `uv sync`
+- Run project scripts: `uv run <script>` (e.g., `uv run pytest`, `uv run uvicorn backend.api.main:app`).
+- Check environment: `uv run scripts/health_check.sh`
+- The environment is reproducible via `pyproject.toml` and `uv.lock`.

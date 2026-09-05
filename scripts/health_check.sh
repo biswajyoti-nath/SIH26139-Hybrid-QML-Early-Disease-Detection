@@ -83,7 +83,16 @@ fi
 header "BACKEND"
 if [ -d "backend" ]; then
     pass "backend/ directory exists"
-    [ -f "backend/requirements.txt" ] && pass "requirements.txt exists" || warn "requirements.txt not yet created"
+    if [ -f "pyproject.toml" ]; then
+        pass "pyproject.toml found"
+    else
+        warn "pyproject.toml not found. Is Phase 1 (T-010) started?"
+    fi
+    if [ -f "uv.lock" ]; then
+        pass "uv.lock found"
+    else
+        warn "uv.lock not found. Have dependencies been installed?"
+    fi
     [ -f "backend/__init__.py" ] && pass "backend/__init__.py exists" || warn "backend/__init__.py not yet created"
 else
     warn "backend/ not yet created (T-011)"

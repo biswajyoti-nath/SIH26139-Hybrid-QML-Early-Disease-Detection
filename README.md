@@ -30,20 +30,19 @@ cat TASKS.md           # task queue
 
 ### 2. Set up environment
 ```bash
-# Python 3.12 required (not 3.14 — quantum package compatibility)
-python3.12 -m venv .venv
-source .venv/bin/activate
-pip install -r backend/requirements.txt  # once backend/ is created
+# We use `uv` as the canonical environment manager.
+# Ensure uv is installed, then run:
+uv sync
 ```
 
 ### 3. Check health
 ```bash
-./scripts/health_check.sh
+uv run ./scripts/health_check.sh
 ```
 
 ### 4. Run tests
 ```bash
-pytest backend/tests/ -v  # once tests exist
+uv run pytest backend/tests/ -v
 ```
 
 ---

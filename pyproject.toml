@@ -1,0 +1,21 @@
+[project]
+name = "core-program"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "numpy>=2.3.5",
+    "pennylane>=0.45.1",
+    "pennylane-lightning>=0.45.0",
+    "scikit-learn>=1.9.0",
+    "shap>=0.52.0",
+    "uvicorn>=0.52.4",
+    "xgboost>=3.4.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

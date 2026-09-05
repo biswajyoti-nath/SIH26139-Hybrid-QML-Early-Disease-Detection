@@ -9,49 +9,35 @@
 
 ## Environment Snapshot
 
-| Tool | Installed Version | How Detected |
+| Tool | Managed By | Installed Version |
 |---|---|---|
-| Python | 3.14.4 | `python3 --version` |
-| Node.js | 22.22.1 | `node --version` |
-| npm | 10.9.4 | `npm --version` |
-| Docker | 29.6.2 | `docker --version` |
-| git | 2.53.0 | `git --version` |
-| numpy | 2.3.5 | `pip show numpy` |
+| Python | `uv` | 3.12.13 (via `.venv`) |
+| uv | System | 0.10.11 |
+| Node.js | System | 22.22.1 |
+| Docker | System | 29.6.2 |
 
-### Not Installed
+### Dependencies (via `uv`)
 
-The following packages from the proposed stack are **NOT currently installed**:
-- qiskit
-- qiskit-aer
-- qiskit-machine-learning
-- pennylane
-- pennylane-lightning
-- scikit-learn
-- xgboost
-- shap
-- fastapi
-- uvicorn
+**Core dependencies:**
+- `scikit-learn` (Classical models, preprocessing)
+- `xgboost` (Classical baseline)
+- `numpy` (Math)
+- `fastapi` & `uvicorn` (Backend API)
 
----
+**Quantum dependencies:**
+- `pennylane`
+- `pennylane-lightning` (C++ fast simulator)
 
-## CRITICAL RISK: Python 3.14.4
+**Development dependencies:**
+- `pytest`
 
-> ⚠️ **Python 3.14 is bleeding-edge and may have package compatibility issues.**
+### Environment Management Strategy: `uv`
 
-Python 3.14 was released in 2025. As of the research audit date (2026-09-05), the installed version is 3.14.4 (a patch release, which is positive). However:
+We have standardized on `uv` for all Python environment and dependency management.
 
-- **qiskit-machine-learning 0.9.x** officially supports Python 3.10–3.13.
-- **PennyLane-Lightning** latest release supports Python 3.11–3.13 (dropped 3.10 in recent release).
-- **Most quantum packages** publish wheels for Python 3.10–3.13; Python 3.14 may require compiling from source.
-
-**Resolution options:**
-1. Use `pyenv` or virtual environment with Python 3.12 or 3.13 (recommended for maximum compatibility).
-2. Test each quantum package with Python 3.14 and fall back if needed.
-3. Use a Docker container with Python 3.12 for reproducibility.
-
-**Recommendation:** **Use Python 3.12** in a virtual environment. This is the safest choice for all packages in the stack.
-
----
+- **Python Version:** 3.12 (specifically downloaded and managed by `uv` to avoid compatibility issues with the system's Python 3.14).
+- **Lockfile Strategy:** We use `uv.lock` to ensure deterministic, reproducible builds across all agent sessions and deployment targets.
+- **Workflow:** All scripts are executed via `uv run` to ensure they run in the exact locked environment. No global pip installations are allowed.
 
 ## Quantum Frameworks
 

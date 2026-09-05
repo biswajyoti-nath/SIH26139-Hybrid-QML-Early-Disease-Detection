@@ -40,8 +40,11 @@
 ### No Unnecessary Dependencies
 
 - Use stdlib when sufficient.
-- Do NOT add a new package to `requirements.txt` without documenting why in DECISIONS.md.
-- Check that the new package is compatible with Python 3.12 and other installed packages.
+- Do NOT add a new package without documenting why in DECISIONS.md.
+- Check that the new package is compatible with Python 3.12.
+- **Always use `uv add <package>`** (or `uv add --dev <package>`).
+- Do NOT use `pip install`.
+- After adding, run tests via `uv run pytest` to ensure environment stability.
 
 ### Loose Coupling
 

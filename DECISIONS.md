@@ -136,3 +136,9 @@
 | Q3.5: n_layers (1, 3, 5) | Empirical (loss curve analysis) | T-041 |
 | Q4.1: CV vs holdout for final results | Both: holdout for proto, CV for final | T-032 → T-042 |
 | Q5.1: SHAP background sample size | N=50 initial; tune if too slow | T-050 |
+
+### 09. Graphify Tool Integration
+- **Context:** Evaluated `graphify` for building a project context graph over our Markdown-heavy research repository.
+- **Decision:** Do NOT force Graphify into the automated pipeline.
+- **Rationale:** The repository currently consists of 23+ Markdown/document files. Graphify relies on a semantic LLM pass to build relations between non-code text files, which requires setting an explicit `GEMINI_API_KEY` (or similar). Mandating external API keys for a simple health check or graph build violates our reproducible, offline-first development ethos. 
+- **Alternative:** We manually maintain `docs/PROJECT_HIERARCHY.md` as the definitive structural map of the project.

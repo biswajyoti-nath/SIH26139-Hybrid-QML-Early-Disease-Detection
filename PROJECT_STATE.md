@@ -41,10 +41,12 @@ Establish the agentic development workspace so future sessions can work autonomo
 ---
 
 ## Active Task
-
+ 
 **T-000: Agentic workspace setup** — ✅ ACCEPTED (this session)  
 **T-001: .gitignore + README.md** — ✅ ACCEPTED (this session)  
-**Next active task: T-010 — Python environment resolution**
+**T-010: Python environment resolution (`uv` setup)** — ✅ ACCEPTED (this session)  
+**Next active task: T-011 — Backend project skeleton**
+
 ---
 
 ## Blocked Tasks

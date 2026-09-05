@@ -118,26 +118,26 @@ None / Description
 ## Environment Quick Reference
 
 ```bash
-# Activate environment
-source .venv/bin/activate
+# Sync environment from uv.lock
+uv sync
 
 # Check health
-./scripts/health_check.sh
+uv run ./scripts/health_check.sh
 
 # Run tests
-pytest backend/tests/ -v
+uv run pytest backend/tests/ -v
 
 # Start API (development)
-uvicorn backend.api.main:app --reload --port 8000
+uv run uvicorn backend.api.main:app --reload --port 8000
 
 # Start frontend (development)
 cd frontend && npm run dev
 
 # Run full experiment (from backend/)
-python -m backend.core.experiment_runner experiments/configs/exp_NNN.json
+uv run python -m backend.core.experiment_runner experiments/configs/exp_NNN.json
 
-# Git checkpoint
-git add -A && git commit -m "type(scope): description"
+# Add new dependency
+uv add <package_name>
 ```
 
 ---
