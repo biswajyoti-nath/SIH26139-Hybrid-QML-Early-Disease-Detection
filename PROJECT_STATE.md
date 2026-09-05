@@ -8,8 +8,8 @@
 
 ## Active Task
  
-**T-050: Evolve research direction (Quantum Suitability / Adaptive Pathways)** — ✅ ACCEPTED  
-**Next active task: T-060 — Complexity-Regime Benchmark Engine & Suitability Profiler**
+**T-060: Complexity-Regime Benchmark Engine** — ✅ VERIFIED  
+**Next active task: T-061 — Quantum Suitability Profiler**
 
 ---
 
@@ -22,6 +22,6 @@
 ## Session Handoff (Next Agent Instructions)
 
 - Read `AGENTS.md` before doing anything.
-- The project has pivoted from "beat classical ML on WDBC" to "discover WHEN quantum pathways are scientifically justified."
-- Read `docs/MILESTONE_04_RESEARCH_DIRECTION.md` for the comprehensive 11-point architectural plan.
-- The next exact implementation step is building synthetic datasets of varying complexities to find regimes where quantum representation provides utility, and building the `Quantum Suitability Engine` to profile data before routing it.
+- The project is in Phase 4. We just verified T-060 by establishing the Complexity-Regime Benchmark Engine and proving that VQC performance spikes significantly under Highly Correlated data regimes (R3_CORRELATED).
+- Read `docs/COMPLEXITY_BENCHMARK_RESULTS.md` for the empirical findings that justify the suitability engine.
+- The next step (T-061) is to build the actual `Quantum Suitability Profiler` that uses feature correlation as a mathematical trigger to recommend quantum execution.

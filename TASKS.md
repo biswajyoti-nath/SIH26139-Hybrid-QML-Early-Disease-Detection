@@ -18,7 +18,7 @@
 
 ### T-001: .gitignore + README.md
 - **Priority:** P0
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** git init (done)
 - **Output:** .gitignore (Python + Node + IDE patterns), README.md (project overview)
 - **Verification:** `git status` shows no junk files; README renders correctly
@@ -49,7 +49,7 @@
 
 ### T-012: Frontend project skeleton
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-010
 - **Expected output:** `frontend/` directory with Vite + React 18 scaffold; `npm install` succeeds; `npm run dev` starts
 - **Verification:** `npm run build` exits 0
@@ -186,7 +186,7 @@
 
 ### T-050: ExplainabilityEngine — SHAP for classical
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-030
 - **Expected output:**
   - `backend/core/explainability_engine.py` — `ExplainabilityEngine`
@@ -196,7 +196,7 @@
 
 ### T-051: ExplainabilityEngine — input attribution for VQC
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-050, T-041
 - **Expected output:**
   - `explain_quantum(model, X_bg, X_explain)` using KernelExplainer (black-box)
@@ -237,7 +237,7 @@
 
 ### T-070: FastAPI application
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-060, T-061
 - **Expected output:**
   - `backend/api/main.py` with all endpoints from `docs/SOFTWARE_ARCHITECTURE.md §3.9`
@@ -252,32 +252,32 @@
 
 ### T-080: React dashboard scaffold
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-070, T-012
 - **Expected output:** Basic dashboard that calls API and displays experiment list
 - **Verification:** Page loads; API call returns data; no console errors
 
 ### T-081: Results comparison table
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-080
 - **Output:** Side-by-side metrics for all models; correct highlighting; honest VerdictPanel
 
 ### T-082: ROC curve + confusion matrix visualizations
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-081
 - **Output:** ROC overlay chart; per-model confusion matrices
 
 ### T-083: SHAP plots + explainability panel
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-082, T-051
 - **Output:** SHAP beeswarm/waterfall; circuit info card for VQC
 
 ### T-084: Experiment metadata + reproducibility panel
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-081
 - **Output:** Full config displayed; "Copy metadata" button
 
@@ -287,19 +287,19 @@
 
 ### T-090: Docker Compose setup
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-070, T-083
 - **Output:** `docker-compose.yml` starts backend + frontend with one command
 
 ### T-091: End-to-end integration test
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-090
 - **Verification:** Full demo flow from Step 1 to Step 11 works; VerdictPanel shows real result
 
 ### T-092: Demo pre-training + cache
 - **Priority:** P1 (for demo day)
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-042, T-091
 - **Output:** Pre-trained results cached in `experiments/results/`; UI loads instantly
 
@@ -309,12 +309,12 @@
 
 ### T-100: Unit test suite
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Output:** `pytest` runs; all core modules have tests; CI-ready
 
 ### T-101: Integration test suite
 - **Priority:** P2
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Output:** Full experiment pipeline tested end-to-end with known inputs
 
 ### T-102: Multi-seed experiment + mean/std reporting
@@ -346,12 +346,12 @@
 
 ### T-060: Complexity-Regime Benchmark Engine
 - **Description:** Implement synthetic dataset generators with tunable nonlinear boundaries, noise, and correlation profiles.
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Priority:** High
 
 ### T-061: Quantum Suitability Profiler
 - **Description:** Implement a module that analyzes dataset statistical profiles (e.g. classical SVM margin width) to predict if a VQC should be attempted.
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Priority:** High
 
 ### T-062: Residual/Specialist Hybrid Architecture

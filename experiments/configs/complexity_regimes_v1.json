@@ -1,0 +1,21 @@
+{
+    "benchmark_name": "complexity_regimes_v1",
+    "description": "Controlled synthetic complexity benchmarking for QML.",
+    "seeds": [42, 123, 2026],
+    "n_samples": 150,
+    "regimes": [
+        "R1_SIMPLE",
+        "R2_NONLINEAR",
+        "R3_CORRELATED",
+        "R4_NOISY",
+        "R5_HIGH_DIMENSIONAL"
+    ],
+    "models": ["svm", "random_forest", "xgboost", "vqc"],
+    "quantum_config": {
+        "n_qubits": 6,
+        "n_layers": 3,
+        "loss_fn": "mse",
+        "iterations": 10,
+        "learning_rate": 0.05
+    }
+}
