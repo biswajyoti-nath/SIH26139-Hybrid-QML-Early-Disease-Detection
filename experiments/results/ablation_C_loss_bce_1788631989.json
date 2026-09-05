@@ -1,0 +1,74 @@
+{
+  "experiment_id": "ablation_C_loss_bce",
+  "timestamp": "2026-09-05T23:42:04.886496",
+  "dataset": "WDBC",
+  "dataset_source": "sklearn.datasets.load_breast_cancer (UCI WDBC)",
+  "split_strategy": "stratified_holdout",
+  "test_fraction": 0.2,
+  "random_seed": 42,
+  "n_pca_components": 6,
+  "preprocessing": "StandardScaler+PCA",
+  "models_tested": [
+    "vqc"
+  ],
+  "results": {
+    "vqc": {
+      "hyperparameters": {
+        "n_qubits": 6,
+        "n_layers": 3,
+        "learning_rate": 0.05,
+        "iterations": 25,
+        "random_state": 42,
+        "loss_fn": "bce"
+      },
+      "metrics": {
+        "accuracy": 0.6403508771929824,
+        "sensitivity": 0.6428571428571429,
+        "specificity": 0.6388888888888888,
+        "precision": 0.5094339622641509,
+        "f1": 0.5684210526315789,
+        "roc_auc": 0.6878306878306879,
+        "confusion_matrix": {
+          "tn": 46,
+          "fp": 26,
+          "fn": 15,
+          "tp": 27
+        },
+        "training_time_s": 64.00564141799987,
+        "inference_time_s": 0.24974147400644142,
+        "history": [
+          0.6845800819979696,
+          0.6793320177376302,
+          0.6748759740801935,
+          0.6706793137728877,
+          0.6663899288255701,
+          0.6619652762221524,
+          0.6574799191609785,
+          0.6530538222509353,
+          0.648839467556129,
+          0.6450137354736221,
+          0.6417573619848503,
+          0.6392171770950265,
+          0.6374560955136792,
+          0.6364127074767036,
+          0.635910429298668,
+          0.6357352293943255,
+          0.6357173107248123,
+          0.6357495798176147,
+          0.6357695781178837,
+          0.6357450764465125,
+          0.6356661375249788,
+          0.6355358303381551,
+          0.6353601319107568,
+          0.6351414984274887,
+          0.6348776323294614
+        ]
+      }
+    }
+  },
+  "software_versions": {
+    "python": "3.12.13",
+    "sklearn": "1.9.0",
+    "xgboost": "3.4.1"
+  }
+}

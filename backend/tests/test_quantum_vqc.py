@@ -44,3 +44,14 @@ def test_vqc_determinism():
     prob1 = vqc1.predict_proba(X)
     prob2 = vqc2.predict_proba(X)
     np.testing.assert_array_almost_equal(prob1, prob2)
+
+def test_vqc_bce_loss():
+    vqc = PennyLaneVQC(n_qubits=2, n_layers=1, iterations=2, learning_rate=0.1, random_state=42, loss_fn="bce")
+    X = np.array([[0.0, 0.1], [np.pi, np.pi/2], [0.1, 0.2], [np.pi/2, np.pi]])
+    y = np.array([0, 1, 0, 1])
+    
+    old_weights = vqc.weights.copy()
+    vqc.fit(X, y)
+    
+    assert not np.allclose(old_weights, vqc.weights)
+    assert len(vqc.history_) == 2

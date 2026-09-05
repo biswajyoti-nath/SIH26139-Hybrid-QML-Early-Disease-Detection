@@ -200,3 +200,16 @@ Every claim MUST be assigned one of the following classes:
 - **Evidence:** 80/20 stratified holdout comparison using identical PCA components.
 - **Classification:** OUR EXPERIMENT
 - **Constraint:** This establishes that raw injection of data into a variational circuit does not yield automatic advantages. Extensive hyperparameter tuning, loss function redesign (e.g., cross-entropy), or advanced feature maps are necessary to close the gap.
+
+### CLAIM_006: Optimized VQC Underperforms Classical ML on WDBC
+- **Claim:** Even after structural ablation (PCA dimensions, circuit depth, loss functions, iterations), a PennyLane VQC (6-qubits, 3 layers) achieves only ~62.0% mean 5-fold CV ROC-AUC on WDBC.
+- **Source:** OUR EXPERIMENT (exp_005_ablation_final_cv)
+- **Evidence:** Strict 5-fold cross-validation showing a -37.3% ROC-AUC delta against a classical linear SVM.
+- **Classification:** OUR EXPERIMENT
+- **Constraint:** DO NOT CLAIM that quantum machine learning currently provides any predictive advantage for breast cancer diagnosis using standard tabular data and standard VQC architectures.
+
+### CLAIM_007: VQC Dimensionality Trade-off (Barren Plateaus)
+- **Claim:** Increasing qubit count from 6 to 8 on WDBC tabular data hurts VQC performance, likely due to optimization difficulty (barren plateaus), despite retaining more dataset variance.
+- **Source:** OUR EXPERIMENT (exp_005_ablation_final_cv Stage A)
+- **Evidence:** 6 qubits achieved 0.689 ROC-AUC in holdout, while 8 qubits dropped to 0.599.
+- **Classification:** OUR EXPERIMENT

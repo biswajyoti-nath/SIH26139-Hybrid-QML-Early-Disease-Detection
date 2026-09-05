@@ -1,0 +1,74 @@
+{
+  "experiment_id": "ablation_B_depth3",
+  "timestamp": "2026-09-05T23:39:55.874341",
+  "dataset": "WDBC",
+  "dataset_source": "sklearn.datasets.load_breast_cancer (UCI WDBC)",
+  "split_strategy": "stratified_holdout",
+  "test_fraction": 0.2,
+  "random_seed": 42,
+  "n_pca_components": 6,
+  "preprocessing": "StandardScaler+PCA",
+  "models_tested": [
+    "vqc"
+  ],
+  "results": {
+    "vqc": {
+      "hyperparameters": {
+        "n_qubits": 6,
+        "n_layers": 3,
+        "learning_rate": 0.05,
+        "iterations": 25,
+        "random_state": 42,
+        "loss_fn": "mse"
+      },
+      "metrics": {
+        "accuracy": 0.6228070175438597,
+        "sensitivity": 0.5952380952380952,
+        "specificity": 0.6388888888888888,
+        "precision": 0.49019607843137253,
+        "f1": 0.5376344086021505,
+        "roc_auc": 0.689484126984127,
+        "confusion_matrix": {
+          "tn": 46,
+          "fp": 26,
+          "fn": 17,
+          "tp": 25
+        },
+        "training_time_s": 62.98854989100073,
+        "inference_time_s": 0.2581436250038678,
+        "history": [
+          0.24575046582201868,
+          0.24315837088823392,
+          0.24096842218759376,
+          0.23892029875236326,
+          0.23684911266209022,
+          0.23474302565136346,
+          0.23264305915697867,
+          0.23060483923152733,
+          0.22869172116571884,
+          0.22697218918944062,
+          0.22551441710773173,
+          0.2243749887910732,
+          0.22357992979915517,
+          0.2231052455692474,
+          0.22287533382798372,
+          0.22279249295311349,
+          0.22277693636992965,
+          0.222780463914562,
+          0.22277677290041312,
+          0.22275093688814263,
+          0.22269576798164392,
+          0.22261113402329444,
+          0.22250202851792872,
+          0.22237515738922242,
+          0.22223568384079082
+        ]
+      }
+    }
+  },
+  "software_versions": {
+    "python": "3.12.13",
+    "sklearn": "1.9.0",
+    "xgboost": "3.4.1"
+  }
+}

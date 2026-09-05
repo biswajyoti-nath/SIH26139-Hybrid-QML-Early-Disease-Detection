@@ -51,3 +51,16 @@
 | 2026-09-05 | exp_003_vqc_smoke | vqc, svm | seed=42 | See exp_003_vqc_smoke_*.json |
 | 2026-09-05 | exp_004_vqc_baseline | svm, random_forest, xgboost, vqc | seed=42 | See exp_004_vqc_baseline_*.json |
 | 2026-09-05 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
+| 2026-09-05 | ablation_A_dim4 | vqc | seed=42 | See ablation_A_dim4_*.json |
+| 2026-09-05 | ablation_A_dim4 | vqc | seed=42 | See ablation_A_dim4_*.json |
+| 2026-09-05 | ablation_A_dim6 | vqc | seed=42 | See ablation_A_dim6_*.json |
+| 2026-09-05 | ablation_A_dim8 | vqc | seed=42 | See ablation_A_dim8_*.json |
+| 2026-09-05 | ablation_B_depth1 | vqc | seed=42 | See ablation_B_depth1_*.json |
+| 2026-09-05 | ablation_B_depth2 | vqc | seed=42 | See ablation_B_depth2_*.json |
+| 2026-09-05 | ablation_B_depth3 | vqc | seed=42 | See ablation_B_depth3_*.json |
+| 2026-09-05 | ablation_C_loss_mse | vqc | seed=42 | See ablation_C_loss_mse_*.json |
+| 2026-09-05 | ablation_C_loss_bce | vqc | seed=42 | See ablation_C_loss_bce_*.json |
+| 2026-09-05 | ablation_D_iters_25 | vqc | seed=42 | See ablation_D_iters_25_*.json |
+| 2026-09-05 | ablation_D_iters_50 | vqc | seed=42 | See ablation_D_iters_50_*.json |
+| 2026-09-05 | ablation_D_iters_100 | vqc | seed=42 | See ablation_D_iters_100_*.json |
+| 2026-09-05 | exp_005_ablation_final_cv | vqc, svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_005_ablation_final_cv_*.json |

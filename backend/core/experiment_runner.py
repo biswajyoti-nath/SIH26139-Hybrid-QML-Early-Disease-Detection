@@ -74,9 +74,10 @@ class ExperimentRunner:
             metrics = EvaluationEngine.evaluate(prep_result.y_test, y_pred, y_pred_proba)
             metrics["training_time_s"] = training_time
             metrics["inference_time_s"] = inference_time
+            if hasattr(model, "history_"):
+                metrics["history"] = model.history_
             
             results_out["results"][model_name] = {
-                "history": getattr(model, "history_", []),
                 "hyperparameters": model_params,
                 "metrics": metrics
             }

@@ -1,0 +1,74 @@
+{
+  "experiment_id": "ablation_A_dim4",
+  "timestamp": "2026-09-05T23:32:12.564525",
+  "dataset": "WDBC",
+  "dataset_source": "sklearn.datasets.load_breast_cancer (UCI WDBC)",
+  "split_strategy": "stratified_holdout",
+  "test_fraction": 0.2,
+  "random_seed": 42,
+  "n_pca_components": 4,
+  "preprocessing": "StandardScaler+PCA",
+  "models_tested": [
+    "vqc"
+  ],
+  "results": {
+    "vqc": {
+      "hyperparameters": {
+        "n_qubits": 4,
+        "n_layers": 3,
+        "learning_rate": 0.05,
+        "iterations": 25,
+        "random_state": 42,
+        "loss_fn": "mse"
+      },
+      "metrics": {
+        "accuracy": 0.631578947368421,
+        "sensitivity": 0.5,
+        "specificity": 0.7083333333333334,
+        "precision": 0.5,
+        "f1": 0.5,
+        "roc_auc": 0.6726190476190477,
+        "confusion_matrix": {
+          "tn": 51,
+          "fp": 21,
+          "fn": 21,
+          "tp": 21
+        },
+        "training_time_s": 92.25268894300098,
+        "inference_time_s": 0.3049801620072685,
+        "history": [
+          0.22767158784588368,
+          0.22334007977165815,
+          0.21944739770607635,
+          0.2162059709929201,
+          0.21373869912984467,
+          0.21204055051266427,
+          0.2110155182001219,
+          0.21054938696286965,
+          0.21049731548496906,
+          0.21067508125404782,
+          0.21090032112635831,
+          0.21104311785348706,
+          0.21105001882034796,
+          0.21093489222964706,
+          0.21074542854552175,
+          0.21052203782823783,
+          0.21027977343467544,
+          0.21002901043609215,
+          0.2097895335154048,
+          0.20957960526731204,
+          0.2094066150578728,
+          0.2092681445235776,
+          0.20915644140535877,
+          0.20906168836286362,
+          0.2089747658608074
+        ]
+      }
+    }
+  },
+  "software_versions": {
+    "python": "3.12.13",
+    "sklearn": "1.9.0",
+    "xgboost": "3.4.1"
+  }
+}
