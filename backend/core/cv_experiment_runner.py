@@ -32,7 +32,7 @@ class CVExperimentRunner:
             "split_strategy": f"{self.n_splits}-fold_stratified_cv",
             "random_seed": self.config.random_seed,
             "n_pca_components": self.config.n_pca_components,
-            "scaler": "StandardScaler",
+            "preprocessing": "StandardScaler+PCA",
             "models_tested": list(self.config.models.keys()),
             "results": {},
             "software_versions": {
@@ -42,13 +42,13 @@ class CVExperimentRunner:
             }
         }
         
-        # Initialize results storage
         for model_name in self.config.models.keys():
             results_out["results"][model_name] = {
                 "hyperparameters": self.config.models[model_name],
                 "folds": [],
                 "metrics_mean": {},
-                "metrics_std": {}
+                "metrics_std": {},
+                "pooled_confusion_matrix": {"tn": 0, "fp": 0, "fn": 0, "tp": 0}
             }
             
         skf = StratifiedKFold(n_splits=self.n_splits, shuffle=True, random_state=self.config.random_seed)
@@ -59,18 +59,10 @@ class CVExperimentRunner:
             X_train_raw, X_test_raw = dataset.X[train_idx], dataset.X[test_idx]
             y_train, y_test = dataset.y[train_idx], dataset.y[test_idx]
             
-            # Preprocess (Leakage safe)
-            from sklearn.preprocessing import StandardScaler
-            from sklearn.decomposition import PCA
-            
-            scaler = StandardScaler()
-            X_train = scaler.fit_transform(X_train_raw)
-            X_test = scaler.transform(X_test_raw)
-            
-            if self.config.n_pca_components:
-                pca = PCA(n_components=self.config.n_pca_components, random_state=self.config.random_seed)
-                X_train = pca.fit_transform(X_train)
-                X_test = pca.transform(X_test)
+            # Preprocess (Leakage safe) via Pipeline
+            pipeline = PreprocessingEngine.build_pipeline(self.config.n_pca_components, self.config.random_seed)
+            X_train = pipeline.fit_transform(X_train_raw)
+            X_test = pipeline.transform(X_test_raw)
                 
             for model_name, model_params in self.config.models.items():
                 model = ModelFactory.create_classical_model(model_name, model_params)
@@ -93,6 +85,13 @@ class CVExperimentRunner:
                 metrics["inference_time_s"] = inf_time
                 
                 results_out["results"][model_name]["folds"].append(metrics)
+                
+                # Accumulate pooled confusion matrix
+                cm = metrics["confusion_matrix"]
+                results_out["results"][model_name]["pooled_confusion_matrix"]["tn"] += cm["tn"]
+                results_out["results"][model_name]["pooled_confusion_matrix"]["fp"] += cm["fp"]
+                results_out["results"][model_name]["pooled_confusion_matrix"]["fn"] += cm["fn"]
+                results_out["results"][model_name]["pooled_confusion_matrix"]["tp"] += cm["tp"]
                 
         # Compute means and stds
         for model_name in self.config.models.keys():

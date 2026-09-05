@@ -7,17 +7,16 @@
 
 ---
 
-## Classification Categories
+## Classification System
 
-| Category | Definition |
-|---|---|
-| **A. VERIFIED FACT** | Confirmed from authoritative source; no experimental work needed |
-| **B. OUR EXPERIMENTAL RESULT** | Only after we actually run the experiment and record the number |
-| **C. RESEARCH HYPOTHESIS** | Scientifically plausible but not yet tested by us |
-| **D. FUTURE WORK** | Planned or aspirational; clearly not part of the current prototype |
-| **E. UNSUPPORTED / DO NOT CLAIM** | Lacks evidence; misleading; or makes a claim we cannot defend |
+Every claim MUST be assigned one of the following classes:
 
-**Rule:** Category B claims can ONLY be made after the experiment has run, the result is recorded, and it is clearly labelled as "our result under [specific experimental conditions]."
+- **EXTERNAL FACT**: Verified external claims backed by peer-reviewed literature.
+- **OUR EXPERIMENT**: Internally generated claims backed by a reproducible experiment artifact.
+- **HYPOTHESIS**: Testable claims we intend to evaluate during the project.
+- **FUTURE WORK**: Out-of-scope claims or speculations reserved for future research.
+
+> **CRITICAL RULE:** Never classify internally generated numbers as "Verified Fact". Use "OUR EXPERIMENT". Never call a baseline performance a "ceiling" — it is a "reference baseline under current protocol."
 
 ---
 
@@ -177,6 +176,6 @@
 ### CLAIM_002: Classical Baselines are Extremely Strong on WDBC
 - **Claim:** Standard classical models (SVM, RF, XGBoost) achieve >95% accuracy and F1 on WDBC (8 PCA components).
 - **Source:** OUR EXPERIMENT (exp_002_cv_baseline)
-- **Evidence:** 5-fold CV shows SVM achieves 97.3% accuracy, 96.4% F1, and 99.4% ROC-AUC.
-- **Classification:** C (Verified Fact - Internal)
-- **Constraint:** This sets an extremely high bar for any quantum advantage claims. VQC must be benchmarked against this exact 97.3% accuracy ceiling to claim "improvement".
+- **Evidence:** 5-fold CV shows SVM achieves 97.3% mean accuracy, 96.4% mean F1, and 99.4% mean ROC-AUC.
+- **Classification:** OUR EXPERIMENT
+- **Constraint:** This sets a reference baseline under the current experimental protocol. VQC must be benchmarked against this exact 97.3% accuracy baseline to claim "improvement".

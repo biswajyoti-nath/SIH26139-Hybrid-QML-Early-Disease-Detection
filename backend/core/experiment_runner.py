@@ -39,7 +39,7 @@ class ExperimentRunner:
             "test_fraction": self.config.test_size,
             "random_seed": self.config.random_seed,
             "n_pca_components": self.config.n_pca_components,
-            "scaler": "StandardScaler",
+            "preprocessing": "StandardScaler+PCA",
             "models_tested": list(self.config.models.keys()),
             "results": {},
             "software_versions": {

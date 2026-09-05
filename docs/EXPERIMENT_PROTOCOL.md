@@ -430,3 +430,14 @@ Compute verdict
       ↓
 Display in dashboard
 ```
+
+---
+
+## 12. Dataset Provenance Decision
+
+The project explicitly uses `sklearn.datasets.load_breast_cancer()` as the canonical source for the WDBC dataset.
+
+**Justification:**
+1. **Verifiable Identity:** The sklearn dataset is a direct, unmodified copy of the UCI Machine Learning Repository's Breast Cancer Wisconsin (Diagnostic) dataset (WDBC).
+2. **Reproducibility:** Distributing or caching a raw CSV requires managing file paths and parsing logic across environments. Relying on `sklearn` guarantees that every researcher running this code receives the exact same 569 instances and 30 features.
+3. **Target Standardisation:** The sklearn dataset defaults to 0 for Malignant and 1 for Benign. Our `DatasetManager` explicitly intercepts and flips this so that Malignant = 1, ensuring sensitivity metrics map correctly to clinical disease detection.
