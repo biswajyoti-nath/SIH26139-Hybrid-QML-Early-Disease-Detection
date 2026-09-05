@@ -139,7 +139,7 @@
 
 ### T-040: QuantumModelEngine abstract interface
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-011
 - **Expected output:**
   - `backend/core/quantum_engine.py` — `QuantumModelEngine` ABC
@@ -149,7 +149,7 @@
 
 ### T-041: PennyLane VQC implementation
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-040, T-010 (PennyLane installed and working)
 - **Expected output:**
   - `backend/quantum/pennylane_vqc.py` — `PennyLaneVQC(QuantumModelEngine)`
@@ -166,7 +166,7 @@
 
 ### T-042: VQC experiment — first benchmark
 - **Priority:** P1
-- **Status:** PLANNED
+- **Status:** VERIFIED
 - **Dependencies:** T-041, T-032 (classical baseline must exist)
 - **Expected output:**
   - Experiment config saved to `experiments/configs/exp_002_vqc_benchmark.json`

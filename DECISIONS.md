@@ -142,3 +142,10 @@
 - **Decision:** Do NOT force Graphify into the automated pipeline.
 - **Rationale:** The repository currently consists of 23+ Markdown/document files. Graphify relies on a semantic LLM pass to build relations between non-code text files, which requires setting an explicit `GEMINI_API_KEY` (or similar). Mandating external API keys for a simple health check or graph build violates our reproducible, offline-first development ethos. 
 - **Alternative:** We manually maintain `docs/PROJECT_HIERARCHY.md` as the definitive structural map of the project.
+
+### Decision 10: Quantum Framework Selection
+- **Context:** We need a framework to implement the VQC that handles quantum gradients efficiently and integrates natively with our Python `scikit-learn` testing pipeline.
+- **Decision:** PennyLane (0.45.1) with `lightning.qubit`.
+- **Alternatives:** Qiskit (qiskit-machine-learning).
+- **Reasoning:** PennyLane abstracts the gradient calculation securely and integrates effortlessly with standard NumPy optimizers, enabling a VQC class that perfectly matches our `ModelFactory` interface. The C++ `lightning.qubit` statevector simulator provides extreme speed improvements over standard simulators for prototype workloads (like our 8-qubit WDBC run).
+- **Consequences:** We depend strictly on PennyLane. If we eventually want hardware execution, we can use PennyLane plugins (e.g., `pennylane-qiskit`) rather than rewriting the circuit from scratch.

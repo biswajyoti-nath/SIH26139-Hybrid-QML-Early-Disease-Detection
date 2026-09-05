@@ -179,3 +179,17 @@ Every claim MUST be assigned one of the following classes:
 - **Evidence:** 5-fold CV shows SVM achieves 97.3% mean accuracy, 96.4% mean F1, and 99.4% mean ROC-AUC.
 - **Classification:** OUR EXPERIMENT
 - **Constraint:** This sets a reference baseline under the current experimental protocol. VQC must be benchmarked against this exact 97.3% accuracy baseline to claim "improvement".
+
+### CLAIM_003: VQC Core Engine is Functional
+- **Claim:** A PennyLane-based Variational Quantum Circuit can natively integrate with standard classical scikit-learn pipelines on WDBC.
+- **Source:** OUR EXPERIMENT (exp_003_vqc_smoke)
+- **Evidence:** End-to-end simulation of an 8-qubit circuit trained via parameter shift / adjoint gradients with identical preprocessing to the classical baselines.
+- **Classification:** OUR EXPERIMENT
+- **Constraint:** This merely establishes the software architecture. It does NOT establish quantum advantage.
+
+### CLAIM_004: VQC Performance and Advantage (FIREWALL)
+- **Claim:** Quantum computing provides speedup, hardware advantage, or clinical benefit for WDBC.
+- **Source:** N/A
+- **Evidence:** None yet.
+- **Classification:** FUTURE WORK
+- **Constraint:** DO NOT CLAIM. Current metrics represent untuned smoke tests or classical simulations. Real advantage requires detailed benchmarks against the CLAIM_002 reference baseline (97.3%).
