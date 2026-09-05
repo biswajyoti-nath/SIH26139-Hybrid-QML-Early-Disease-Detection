@@ -238,3 +238,14 @@ Every claim MUST be assigned one of the following classes:
 - **Source:** OUR EXPERIMENT (exp_005_ablation_final_cv Stage A)
 - **Evidence:** 6 qubits achieved 0.689 ROC-AUC in holdout, while 8 qubits dropped to 0.599.
 - **Classification:** OUR EXPERIMENT
+
+### NOT YET PROVEN (STRICTLY PROHIBITED)
+- correlation causes quantum suitability
+- correlation alone predicts VQC performance
+- quantum entanglement exploits correlated biomedical features
+- quantum advantage / quantum speedup / clinical benefit / clinical validation
+- early detection performance from WDBC
+- generalization of the synthetic result to real biomedical datasets
+
+### CURRENT VERIFIED CLAIM
+"Under the tested synthetic regimes and canonical VQC configuration, R3_CORRELATED produced substantially higher VQC ROC-AUC than R1_SIMPLE, and this association persisted at the canonical 100-iteration training budget."

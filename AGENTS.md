@@ -8,6 +8,41 @@
 
 ---
 
+
+## 0. STRATEGIC OBJECTIVE & WINNING FILTER
+
+**PRIMARY OBJECTIVE:**
+Build the strongest possible SIH 2026 solution for PS 26139 while producing a genuinely novel and scientifically defensible technical contribution.
+
+**WINNING HIERARCHY:**
+1. PS FIT
+2. SIH VALUE
+3. TECHNICAL NOVELTY
+4. DEMO VALUE
+5. SCIENTIFIC VALIDITY
+
+Interpretation:
+- PS FIT is a hard constraint.
+- Novelty must directly serve the problem statement.
+- Demo value matters because this is SIH.
+- Scientific validity prevents unsupported claims.
+- A technically novel feature that does not help solve PS 26139 should be rejected or deferred.
+- Do not add features merely because they sound innovative.
+
+**SIH WINNING FILTER:**
+Before implementing a major feature, ask:
+1. Does this directly serve PS 26139?
+2. Does this improve our SIH competitive position?
+3. Is the contribution technically differentiated?
+4. Can we demonstrate it clearly?
+5. Can we defend the scientific claim?
+6. Can we actually implement and test it within SIH constraints?
+If the answer to PS FIT is NO: REJECT OR DEFER THE IDEA.
+
+**CORE RESEARCH QUESTION:**
+"Does the relative performance and utility of quantum versus classical learning change systematically across biomedical data-complexity regimes relevant to disease detection?"
+The system must NOT assume that quantum is superior. It should ultimately recommend the best pathway (Classical, Quantum-enhanced, Quantum specialist, or Inconclusive) based on evidence.
+
 ## 0. Project Identity (30-second brief)
 
 - **Problem:** SIH 2026 PS 26139 — Hybrid Quantum ML Platform for Early Disease Detection.

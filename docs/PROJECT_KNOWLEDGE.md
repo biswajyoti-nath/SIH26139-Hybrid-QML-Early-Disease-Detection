@@ -411,3 +411,9 @@ Key unresolved items:
 - Noise model experiment.
 - Real QPU testing.
 - Clinical validation pathway.
+
+## 18. Persistent Project Knowledge (Current State)
+- **Strongest current research insight:** "Quantum utility may be dataset-dependent, and the platform should measure that dependency rather than assume it."
+- **Strongest current empirical observation:** "Under the tested synthetic regimes, the correlated R3 regime produced substantially stronger VQC performance than the simple R1 regime, and this difference survived the canonical training budget."
+- **Current research gap:** "Does this behaviour survive on real biomedical disease-classification datasets?"
+- **Intended system-level novelty:** "An evidence-driven hybrid biomedical learning platform that can determine when a quantum pathway is worth using rather than blindly applying quantum ML."

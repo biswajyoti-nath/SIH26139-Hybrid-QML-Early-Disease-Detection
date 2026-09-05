@@ -10,3 +10,5 @@ Ask the following hard questions of any experiment:
 - Is the conclusion stronger than the evidence?
 - Could another explanation account for the result?
 - Were strong causal claims made without isolation (e.g. blaming barren plateaus)?
+
+- Ensure SIH Winning Filter is applied: Does this directly serve PS 26139? Is it technically differentiated and scientifically valid?

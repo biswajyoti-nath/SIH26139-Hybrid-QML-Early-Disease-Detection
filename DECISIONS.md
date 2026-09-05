@@ -154,3 +154,8 @@
 - **Decision:** The project will evolve from a direct classical-vs-VQC benchmark into an evidence-driven hybrid QML platform that investigates when quantum pathways may be useful for biomedical prediction.
 - **Rationale:** The current WDBC experiment shows that the tested VQC is substantially weaker and slower than classical baselines. Rather than hiding this negative result or forcing quantum superiority, the platform will treat WDBC as a negative control and investigate whether quantum utility varies across data complexity regimes and hybrid routing strategies.
 - **Status:** ACCEPTED
+
+### Decision 12: SIH Strategic Alignment & Scientific Gating
+- **Decision:** Project aligned to SIH Winning Hierarchy. Feature correlation will not be used as a Quantum Suitability routing trigger until validated on real biomedical datasets (T-061).
+- **Rationale:** T-060 established an association, but causality is unproven. Prematurely implementing a routing engine based on synthetic data risks scientific invalidity and SIH judge penalties.
+- **Status:** ACCEPTED

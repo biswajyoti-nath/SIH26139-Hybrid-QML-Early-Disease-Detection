@@ -345,21 +345,24 @@
 ## MILESTONE 04: Quantum Suitability & Complexity Benchmarking
 
 ### T-060: Complexity-Regime Benchmark Engine
-- **Description:** Implement synthetic dataset generators with tunable nonlinear boundaries, noise, and correlation profiles.
 - **Status:** VERIFIED
-- **Priority:** High
+- **Description:** Canonical synthetic complexity validation. Established an association between R3_CORRELATED and improved VQC performance.
 
-### T-061: Quantum Suitability Profiler
-- **Description:** Implement a module that analyzes dataset statistical profiles (e.g. classical SVM margin width) to predict if a VQC should be attempted.
-- **Status:** VERIFIED
-- **Priority:** High
+### T-061: Real PS-Relevant Biomedical Complexity Benchmark
+- **Status:** NEXT
+- **Goal:** Test whether the relative behaviour of classical and quantum learning changes across real biomedical disease-classification problems with different measurable data characteristics.
+- **Datasets:** WDBC (569 samples, diagnostic classification), UCI Parkinson's (high-dimensional, ~754 features).
+- **Protocol:** Strict validation, leakage-safe preprocessing, strong classical baselines vs canonical VQC.
 
-### T-062: Residual/Specialist Hybrid Architecture
-- **Description:** Implement the `HybridSpecialistModel` where high-confidence samples clear classical, and ambiguous samples hit the VQC.
-- **Status:** DISCOVERED
-- **Priority:** Medium
+### T-062: Evidence-driven quantum pathway selection
+- **Status:** PLANNED
+- **Description:** Do not automatically implement before T-061 provides sufficient evidence.
 
-### T-063: Quantum Utility Scoring
-- **Description:** Formulate an objective grading metric that evaluates quantum contribution against the exponential runtime cost.
-- **Status:** DISCOVERED
-- **Priority:** Medium
+### T-063: Potential specialist/residual/uncertainty-aware hybrid architecture
+- **Status:** PLANNED
+
+### T-064: SIH prototype integration + visual demonstration
+- **Status:** PLANNED
+
+### T-065: Hostile judge evaluation + final scientific audit
+- **Status:** PLANNED

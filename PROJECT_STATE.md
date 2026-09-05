@@ -8,20 +8,22 @@
 
 ## Active Task
  
-**T-060: Complexity-Regime Benchmark Engine** — ✅ VERIFIED  
-**Next active task: T-061 — Quantum Suitability Profiler**
+**T-060:** VERIFIED  
+**Summary:** Controlled synthetic complexity benchmarking found a reproducible association between the R3 correlated regime and improved VQC performance under the tested canonical configuration.
+**Important limitation:** This does not establish causality or validate feature correlation as a routing criterion.
+
+**NEXT TASK: T-061 — Real PS-Relevant Biomedical Complexity Benchmark**
+**T-061 PURPOSE:** Determine whether the observed synthetic behaviour survives when comparing real biomedical disease-classification datasets relevant to PS 26139. T-061 MUST NOT immediately implement a production Quantum Suitability Profiler. First establish evidence.
 
 ---
 
 ## Blocked Tasks
-
 - None.
 
 ---
 
 ## Session Handoff (Next Agent Instructions)
-
 - Read `AGENTS.md` before doing anything.
-- The project is in Phase 4. We just verified T-060 by establishing the Complexity-Regime Benchmark Engine and proving that VQC performance spikes significantly under Highly Correlated data regimes (R3_CORRELATED).
-- Read `docs/COMPLEXITY_BENCHMARK_RESULTS.md` for the empirical findings that justify the suitability engine.
-- The next step (T-061) is to build the actual `Quantum Suitability Profiler` that uses feature correlation as a mathematical trigger to recommend quantum execution.
+- The project is aligned strictly to SIH PS 26139.
+- We have established an association on synthetic data, but we DO NOT claim causality.
+- The next step (T-061) is to test this hypothesis on real biomedical datasets (WDBC, Parkinson's).
