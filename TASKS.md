@@ -339,3 +339,27 @@
 | F-004 | Clinical validation pathway | Out of scope for SIH prototype |
 | F-005 | Sammartino 2026 reference | Locate or remove; do not cite until verified |
 | F-006 | Prajapati year fix | Verify 2023 vs 2025 before any PPT submission |
+
+---
+
+## MILESTONE 04: Quantum Suitability & Complexity Benchmarking
+
+### T-060: Complexity-Regime Benchmark Engine
+- **Description:** Implement synthetic dataset generators with tunable nonlinear boundaries, noise, and correlation profiles.
+- **Status:** PLANNED
+- **Priority:** High
+
+### T-061: Quantum Suitability Profiler
+- **Description:** Implement a module that analyzes dataset statistical profiles (e.g. classical SVM margin width) to predict if a VQC should be attempted.
+- **Status:** PLANNED
+- **Priority:** High
+
+### T-062: Residual/Specialist Hybrid Architecture
+- **Description:** Implement the `HybridSpecialistModel` where high-confidence samples clear classical, and ambiguous samples hit the VQC.
+- **Status:** DISCOVERED
+- **Priority:** Medium
+
+### T-063: Quantum Utility Scoring
+- **Description:** Formulate an objective grading metric that evaluates quantum contribution against the exponential runtime cost.
+- **Status:** DISCOVERED
+- **Priority:** Medium

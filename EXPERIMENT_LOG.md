@@ -64,3 +64,4 @@
 | 2026-09-05 | ablation_D_iters_50 | vqc | seed=42 | See ablation_D_iters_50_*.json |
 | 2026-09-05 | ablation_D_iters_100 | vqc | seed=42 | See ablation_D_iters_100_*.json |
 | 2026-09-05 | exp_005_ablation_final_cv | vqc, svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_005_ablation_final_cv_*.json |
+| 2026-09-06 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |

@@ -1,17 +1,15 @@
 # PROJECT_STATE.md
 ## SIH 26139 — Hybrid QML Platform
 
-> **Last Updated:** 2026-09-05
-> **Current Phase:** Phase 3 — Quantum Evaluation and Tuning
+> **Last Updated:** 2026-09-06
+> **Current Phase:** Phase 4 — Quantum Suitability & Complexity Benchmarking
 
 ---
 
 ## Active Task
  
-**T-040: QuantumModelEngine abstract interface** — ✅ ACCEPTED  
-**T-041: PennyLane VQC implementation** — ✅ ACCEPTED  
-**T-042: VQC experiment — first benchmark** — ✅ ACCEPTED (Smoke Test completed)  
-**Next active task: T-050 — ExplainabilityEngine (SHAP) + T-080 React Dashboard Scaffold**
+**T-050: Evolve research direction (Quantum Suitability / Adaptive Pathways)** — ✅ ACCEPTED  
+**Next active task: T-060 — Complexity-Regime Benchmark Engine & Suitability Profiler**
 
 ---
 
@@ -24,6 +22,6 @@
 ## Session Handoff (Next Agent Instructions)
 
 - Read `AGENTS.md` before doing anything.
-- The VQC Experiment Engine is successfully integrated with the Classical baseline pipeline.
-- The chosen framework is PennyLane (`lightning.qubit`). See `docs/QUANTUM_STACK_DECISION.md`.
-- Next, we need to begin tuning the VQC (full iterations) to compare fairly with the 97.3% classical baseline, and begin work on explainability (SHAP).
+- The project has pivoted from "beat classical ML on WDBC" to "discover WHEN quantum pathways are scientifically justified."
+- Read `docs/MILESTONE_04_RESEARCH_DIRECTION.md` for the comprehensive 11-point architectural plan.
+- The next exact implementation step is building synthetic datasets of varying complexities to find regimes where quantum representation provides utility, and building the `Quantum Suitability Engine` to profile data before routing it.
