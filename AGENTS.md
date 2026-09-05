@@ -13,7 +13,8 @@
 - **Problem:** SIH 2026 PS 26139 — Hybrid Quantum ML Platform for Early Disease Detection.
 - **Core claim we make:** We are building a platform that can *test* whether quantum ML adds value over classical ML — not one that *assumes* it does.
 - **Pilot dataset:** WDBC (569 samples, 30 features, binary: benign/malignant).
-- **Central hypothesis:** Can a VQC provide useful predictions under the same conditions as strong classical baselines (SVM, RF, XGBoost)?
+- **Central hypothesis:** Can a hybrid QML platform discover WHEN a quantum pathway is scientifically justified for biomedical prediction?
+- **Core Outcome:** The platform should be capable of concluding whether quantum is useful, not useful, inconclusive, or if classical ML is preferable.
 - **Scientific anchor:** Gupta et al. 2025 (npj Dig. Med.) reviewed 4,915 QML papers and found *no consistent evidence* of QML advantage in digital health. Our rigorous benchmarking is itself the contribution.
 - **What we must NEVER claim:** quantum speedup, early detection, clinical validation, fabricated metrics.
 
@@ -186,6 +187,10 @@ PRIMARY AGENT → ONE TASK → TEST → EVALUATOR → (pass) → COMMIT → NEXT
 ---
 
 ## 6. Critical Scientific Rules (Non-Negotiable)
+
+**SCIENTIFIC LANGUAGE RULES:**
+Replace strong causal language with evidence-based wording. E.g., BAD: '8 qubits degraded performance because of barren plateaus.' GOOD: '8 qubits produced lower performance under this configuration. Possible explanations include trainability effects.'
+
 
 These rules are permanent regardless of what phase we are in:
 

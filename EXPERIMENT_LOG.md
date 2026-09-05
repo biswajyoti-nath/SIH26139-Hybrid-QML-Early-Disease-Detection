@@ -1,3 +1,9 @@
+# EXPERIMENT_LOG.md
+
+## WDBC ROLE
+WDBC remains a critical control experiment. Current result: classical models substantially outperform the VQC.
+This is our NEGATIVE CONTROL. Never hide it from the UI, report, PPT, or judge.
+
 # EXPERIMENT_LOG.md — Experiment Registry
 ## SIH 26139 · Hybrid QML Platform
 

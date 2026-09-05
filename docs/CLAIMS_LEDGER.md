@@ -1,4 +1,29 @@
 # CLAIMS_LEDGER.md
+
+## SCIENTIFIC LANGUAGE RULES
+Every important research statement must belong to one of:
+- VERIFIED FACT
+- OUR EXPERIMENT
+- RESEARCH HYPOTHESIS
+- FUTURE WORK
+- DO NOT CLAIM
+
+Never silently promote a hypothesis into a result.
+Especially DO NOT claim:
+- quantum advantage, speedup, or superiority
+- clinical benefit
+- early-detection validation from WDBC
+- hardware advantage when using simulation
+- optimal quantum configuration unless the experimental design actually supports optimality
+- dataset linear separability unless mathematically established
+- synthetic benchmark results before running the benchmark
+
+**Examples:**
+- BAD: "Quantum advantage does not exist for WDBC."
+- GOOD: "No quantum advantage was observed for the tested VQC configuration under our WDBC evaluation protocol."
+- BAD: "This dataset proves quantum ML is useless for tabular biomedical data."
+- GOOD: "This benchmark shows that the tested VQC was substantially weaker and more computationally expensive than the tested classical baselines on WDBC."
+
 ## SIH 26139 — Research Claims Classification Ledger
 ### Team Chai.EXE · Barak Valley Engineering College
 

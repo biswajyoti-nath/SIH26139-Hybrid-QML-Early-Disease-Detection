@@ -149,3 +149,8 @@
 - **Alternatives:** Qiskit (qiskit-machine-learning).
 - **Reasoning:** PennyLane abstracts the gradient calculation securely and integrates effortlessly with standard NumPy optimizers, enabling a VQC class that perfectly matches our `ModelFactory` interface. The C++ `lightning.qubit` statevector simulator provides extreme speed improvements over standard simulators for prototype workloads (like our 8-qubit WDBC run).
 - **Consequences:** We depend strictly on PennyLane. If we eventually want hardware execution, we can use PennyLane plugins (e.g., `pennylane-qiskit`) rather than rewriting the circuit from scratch.
+
+### Decision 11: Pivot to Hybrid Quantum Suitability Engine
+- **Decision:** The project will evolve from a direct classical-vs-VQC benchmark into an evidence-driven hybrid QML platform that investigates when quantum pathways may be useful for biomedical prediction.
+- **Rationale:** The current WDBC experiment shows that the tested VQC is substantially weaker and slower than classical baselines. Rather than hiding this negative result or forcing quantum superiority, the platform will treat WDBC as a negative control and investigate whether quantum utility varies across data complexity regimes and hybrid routing strategies.
+- **Status:** ACCEPTED

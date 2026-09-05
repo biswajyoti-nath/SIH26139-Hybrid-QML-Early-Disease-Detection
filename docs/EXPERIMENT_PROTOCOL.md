@@ -441,3 +441,8 @@ The project explicitly uses `sklearn.datasets.load_breast_cancer()` as the canon
 1. **Verifiable Identity:** The sklearn dataset is a direct, unmodified copy of the UCI Machine Learning Repository's Breast Cancer Wisconsin (Diagnostic) dataset (WDBC).
 2. **Reproducibility:** Distributing or caching a raw CSV requires managing file paths and parsing logic across environments. Relying on `sklearn` guarantees that every researcher running this code receives the exact same 569 instances and 30 features.
 3. **Target Standardisation:** The sklearn dataset defaults to 0 for Malignant and 1 for Benign. Our `DatasetManager` explicitly intercepts and flips this so that Malignant = 1, ensuring sensitivity metrics map correctly to clinical disease detection.
+
+## 13. FAIR COMPARISON & SELECTION BIAS RULE
+- Classical and quantum models must receive comparable experimental treatment. A classical model must NOT be intentionally left at poor defaults while the VQC receives extensive tuning.
+- NO POST-HOC BENCHMARK DESIGN: The dataset generator must be independent of the quantum model. Do not tune synthetic-data parameters after seeing VQC results to manufacture a favorable regime.
+- Do not use the same data repeatedly for selecting the best quantum configuration and claiming unbiased final generalization. Prefer nested cross-validation or preregistered predefined holdouts.
