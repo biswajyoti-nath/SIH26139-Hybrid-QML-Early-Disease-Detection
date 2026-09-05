@@ -59,6 +59,10 @@ To ensure the observed R3 correlation effect was not merely an artifact of early
 - **R3_CORRELATED (100 iters):** SVM (~0.944) vs VQC (~0.822)
 
 **Final Scientific Conclusion:**
-The structural advantage holds. Even with a full 100-iteration optimization budget, the standard VQC completely fails to learn simple orthogonal linear boundaries (R1). However, the highly redundant structure of R3 allows the VQC to reach ~82% ROC-AUC. 
+Under the tested synthetic regimes and canonical VQC configuration, the R3 correlated regime was associated with substantially better VQC ROC-AUC than R1_SIMPLE. This association persisted at the canonical 100-iteration training budget, making the original early-stopping constraint an insufficient explanation for the observed difference.
 
-This confirms that the native entanglement of the quantum state naturally leverages classical multicollinearity. While it still does not exceed the classical baseline, it provides a strictly validated, dataset-dependent structural condition where the quantum pathway transitions from "random guessing" to "meaningful learning". This establishes `mean_abs_feature_correlation` as a scientifically justified input for the upcoming Quantum Suitability Profiler (T-061).
+However, this experiment does not establish that feature correlation itself caused the difference, nor does it establish entanglement or any specific quantum mechanism as the explanation. The R3 regime differs from R1 in multiple data-generation characteristics, so confounding factors remain.
+
+Therefore, mean_abs_feature_correlation should be treated as a promising candidate variable for further suitability analysis, NOT as a validated quantum-routing criterion.
+
+T-061 must test whether the observed association survives on real PS-relevant biomedical datasets before any production Quantum Suitability Profiler or routing rule is implemented.
