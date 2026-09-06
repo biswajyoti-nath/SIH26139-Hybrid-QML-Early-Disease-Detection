@@ -2,18 +2,20 @@
 ## SIH 26139 — Hybrid QML Platform
 
 > **Last Updated:** 2026-09-06
-> **Current Phase:** Phase 4 — Quantum Suitability & Complexity Benchmarking
+> **Current Phase:** Phase 4 — Quantum Suitability & Multi-Pathway Routing
 
 ---
 
 ## Active Task
- 
-**T-060:** VERIFIED  
-**Summary:** Controlled synthetic complexity benchmarking found a reproducible association between the R3 correlated regime and improved VQC performance under the tested canonical configuration.
-**Important limitation:** This does not establish causality or validate feature correlation as a routing criterion.
 
-**NEXT TASK: T-062 — Real PS-Relevant Biomedical Complexity Benchmark**
-**T-061 PURPOSE:** Determine whether the observed synthetic behaviour survives when comparing real biomedical disease-classification datasets relevant to PS 26139. T-061 MUST NOT immediately implement a production Quantum Suitability Profiler. First establish evidence.
+**T-061:** VERIFIED
+**Summary:** Benchmark on real biomedical data (WDBC & Parkinson's) showed dataset-dependent VQC performance, heavily modulated by PCA bottlenecks and feature correlation.
+
+**T-103 (Quantum Model Shootout):** VERIFIED
+**Summary:** Expanded the benchmark to include QSVM (Quantum Kernel). Proved that quantum learning paradigms behave fundamentally differently. QSVM outperformed VQC on WDBC, but both quantum methods catastrophically collapsed on the heavily bottlenecked Parkinson's dataset, while classical SVM maintained high predictive performance.
+
+**NEXT TASK: T-062 — Evidence-Gated Quantum Pathway Selection (Implementation)**
+**PURPOSE:** The mathematical framework for T-062 is designed (`docs/T062_QUANTUM_SUITABILITY_PROTOCOL.md`). The implementation must now build the actual routing component capable of distinguishing between Classical Preferred, QSVM Promising, VQC Promising, or Inconclusive based on dataset complexity metrics (like PCA variance retention).
 
 ---
 
@@ -24,6 +26,6 @@
 
 ## Session Handoff (Next Agent Instructions)
 - Read `AGENTS.md` before doing anything.
-- The project is aligned strictly to SIH PS 26139.
-- We have established an association on synthetic data, but we DO NOT claim causality.
-- The next step (T-062) is to design on real biomedical datasets (WDBC, Parkinson's).
+- Understand the evidence gathered in T-103 (`docs/T103_QUANTUM_SHOOTOUT_REPORT.md`). 
+- Do NOT assume "quantum is better". Do NOT assume any single complexity metric is a perfect predictor.
+- The next step is implementing the T-062 routing logic based on the approved multi-stage protocol.

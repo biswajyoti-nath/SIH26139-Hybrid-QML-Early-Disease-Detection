@@ -29,7 +29,10 @@ class PennyLaneVQC:
             0, 2 * np.pi, (self.n_layers, self.n_qubits), requires_grad=True
         )
         
-        self.dev = qml.device("lightning.qubit", wires=self.n_qubits)
+        try:
+            self.dev = qml.device("lightning.gpu", wires=self.n_qubits)
+        except Exception:
+            self.dev = qml.device("lightning.qubit", wires=self.n_qubits)
         
         @qml.qnode(self.dev, interface="autograd")
         def _circuit(weights, x):

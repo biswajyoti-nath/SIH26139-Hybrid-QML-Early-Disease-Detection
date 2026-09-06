@@ -107,3 +107,5 @@ The real biomedical datasets exhibit distinctly different complexity profiles. P
 
 **SCIENTIFIC CONCLUSION:**
 The evidence confirms dataset-dependent behaviour. VQC performance relative to classical baselines is heavily modulated by dataset complexity characteristics (such as the severity of the PCA information bottleneck and native feature correlation).
+| 2026-09-06 | exp_t103_shootout_wdbc (WDBC) | svm, random_forest, xgboost, vqc, qsvm | seed=42 (5-fold) | See exp_t103_shootout_wdbc_*.json |
+| 2026-09-06 | exp_t103_shootout_parkinsons (Parkinsons) | svm, random_forest, xgboost, vqc, qsvm | seed=42 (5-fold) | See exp_t103_shootout_parkinsons_*.json |

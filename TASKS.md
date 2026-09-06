@@ -319,13 +319,13 @@
 
 ### T-102: Multi-seed experiment + mean/std reporting
 - **Priority:** P3
-- **Status:** DISCOVERED
+- **Status:** VERIFIED
 - **Output:** Experiment results reported as mean ± std across 5 seeds
 
-### T-103: QSVM / Quantum Kernel fallback implementation
+### T-103: QSVM / Quantum Kernel Shootout (Implemented)
 - **Priority:** P3
-- **Status:** DISCOVERED
-- **Output:** QSVM as alternative if VQC training diverges
+- **Status:** VERIFIED
+- **Output:** PennyLaneQSVM implemented and fully benchmarked against classical and VQC baselines
 
 ---
 

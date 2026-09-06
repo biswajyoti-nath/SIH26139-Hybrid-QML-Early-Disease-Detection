@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
 from sklearn.calibration import CalibratedClassifierCV
 from backend.quantum.pennylane_vqc import PennyLaneVQC
+from backend.quantum.pennylane_qsvm import PennyLaneQSVM
 
 class ModelFactory:
     """
@@ -20,6 +21,8 @@ class ModelFactory:
             return RandomForestClassifier(**params)
         elif model_name == "xgboost":
             return XGBClassifier(**params)
+        elif model_name == "qsvm":
+            return PennyLaneQSVM(**params)
         elif model_name == "vqc":
             return PennyLaneVQC(**params)
         else:

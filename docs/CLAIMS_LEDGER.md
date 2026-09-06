@@ -256,3 +256,17 @@ Every claim MUST be assigned one of the following classes:
 - **Evidence:** 5-fold CV comparisons showing VQC maintained learning on WDBC (AUC 0.620) but collapsed to random guessing on Parkinson's (AUC 0.519), while classical SVM extracted signal from both (0.993 and 0.793, respectively).
 - **Classification:** OUR EXPERIMENT
 - **Constraint:** Do not claim that correlation *causes* quantum suitability alone. Claim only that dataset complexity characteristics empirically modulate the relative advantage/disadvantage of the quantum pathway.
+
+### CLAIM_009: The Choice of Quantum Learning Paradigm Matters
+- **Claim:** Quantum suitability depends on both the dataset characteristics and the choice of the quantum learning paradigm (e.g., VQC vs Quantum Kernel).
+- **Source:** OUR EXPERIMENT (T-103: Quantum Shootout)
+- **Evidence:** On WDBC (8 PCA components, 92.7% retained variance), QSVM vastly outperformed canonical VQC (AUC 0.842 vs 0.665) under identical dataset conditions.
+- **Classification:** OUR EXPERIMENT
+- **Constraint:** Do not claim that "quantum methods" generally fail or succeed based on testing only a VQC. Different paradigms behave differently. Do not claim quantum advantage; both still trailed the classical SVM (AUC 0.995).
+
+### CLAIM_010: PCA Representation Bottleneck is Fatal to Current Quantum Models
+- **Claim:** Severe PCA information loss starves current small-scale quantum models of necessary predictive signal, even when classical models operating on the exact same low-dimensional subspace can extract it.
+- **Source:** OUR EXPERIMENT (T-103: Quantum Shootout)
+- **Evidence:** On Parkinson's (47.0% variance retained), classical SVM achieved 0.815 AUC, while VQC (0.549) and QSVM (0.504) completely collapsed. QSVM defaulted to majority-class prediction.
+- **Classification:** OUR EXPERIMENT
+- **Constraint:** Do not state that PCA mathematically destroys all information (as proven by SVM's 0.815 AUC). State that the bottleneck is fatal specifically to the evaluated 8-qubit quantum architectures.
