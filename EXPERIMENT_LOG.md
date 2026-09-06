@@ -46,17 +46,14 @@ This is our NEGATIVE CONTROL. Never hide it from the UI, report, PPT, or judge.
 | Exp ID | Date | Models | Best F1 | VQC F1 | Verdict | Status |
 |---|---|---|---|---|---|---|
 | (none yet) | — | — | — | — | — | — |
-| 2026-09-05 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
 | 2026-09-05 | exp_001_controlled_pilot | svm, random_forest, xgboost | seed=42 | See exp_001_controlled_pilot_*.json |
 | 2026-09-05 | exp_002_cv_baseline | svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_002_cv_baseline_*.json |
-| 2026-09-05 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
 | 2026-09-05 | exp_002_cv_baseline | svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_002_cv_baseline_*.json |
 | 2026-09-05 | exp_002_cv_baseline | svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_002_cv_baseline_*.json |
 | 2026-09-05 | exp_002_cv_baseline | svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_002_cv_baseline_*.json |
 | 2026-09-05 | exp_002_cv_baseline | svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_002_cv_baseline_*.json |
 | 2026-09-05 | exp_003_vqc_smoke | vqc, svm | seed=42 | See exp_003_vqc_smoke_*.json |
 | 2026-09-05 | exp_004_vqc_baseline | svm, random_forest, xgboost, vqc | seed=42 | See exp_004_vqc_baseline_*.json |
-| 2026-09-05 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
 | 2026-09-05 | ablation_A_dim4 | vqc | seed=42 | See ablation_A_dim4_*.json |
 | 2026-09-05 | ablation_A_dim4 | vqc | seed=42 | See ablation_A_dim4_*.json |
 | 2026-09-05 | ablation_A_dim6 | vqc | seed=42 | See ablation_A_dim6_*.json |
@@ -70,8 +67,6 @@ This is our NEGATIVE CONTROL. Never hide it from the UI, report, PPT, or judge.
 | 2026-09-05 | ablation_D_iters_50 | vqc | seed=42 | See ablation_D_iters_50_*.json |
 | 2026-09-05 | ablation_D_iters_100 | vqc | seed=42 | See ablation_D_iters_100_*.json |
 | 2026-09-05 | exp_005_ablation_final_cv | vqc, svm, random_forest, xgboost | seed=42 (5-fold CV) | See exp_005_ablation_final_cv_*.json |
-| 2026-09-06 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
-| 2026-09-06 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
 
 ## Experiment: Complexity-Regime Benchmark (T-060)
 - **Date:** 2026-09-06
@@ -79,14 +74,7 @@ This is our NEGATIVE CONTROL. Never hide it from the UI, report, PPT, or judge.
 - **Result Artifact:** `experiments/results/complexity_benchmark_1788638141.json`
 - **Summary:** Evaluated VQC (6 qubits, 10 iters) against SVM/RF across 5 structural regimes (SIMPLE, NONLINEAR, CORRELATED, NOISY, HIGH_DIMENSIONAL) using 3 predefined seeds and 5-fold CV.
 - **Key Finding:** VQC performance is strongly dependent on data structure, not just hyperparameter tuning. While it failed to match classical models on simple/nonlinear boundaries in this low-iteration limit (AUC ~0.52), it jumped significantly (+22% AUC) on `R3_CORRELATED`. This suggests redundancy/collinearity as a candidate variable for further suitability analysis. The experiment does not establish causality or validate feature correlation as a quantum-routing criterion.
-| 2026-09-06 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
-| 2026-09-06 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
-| 2026-09-06 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
-| 2026-09-06 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
-| 2026-09-06 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
 | 2026-09-06 | test_park (Parkinsons) | svm | seed=42 (3-fold) | See test_park_*.json |
-| 2026-09-06 | smoke_test_001 | svm | seed=42 | See smoke_test_001_*.json |
-| 2026-09-06 | test_park_mock (Parkinsons) | svm | seed=42 (3-fold) | See test_park_mock_*.json |
 | 2026-09-06 | exp_061_wdbc_control (WDBC) | vqc, svm, random_forest, xgboost | seed=42 (5-fold) | See exp_061_wdbc_control_*.json |
 | 2026-09-06 | exp_061_parkinsons (Parkinsons) | vqc, svm, random_forest, xgboost | seed=42 (5-fold) | See exp_061_parkinsons_*.json |
 | 2026-09-06 | exp_061_parkinsons_sensitivity_pca8 (Parkinsons) | vqc, svm | seed=42 (5-fold) | See exp_061_parkinsons_sensitivity_pca8_*.json |

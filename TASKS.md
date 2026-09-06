@@ -349,13 +349,13 @@
 - **Description:** Canonical synthetic complexity validation. Established an association between R3_CORRELATED and improved VQC performance.
 
 ### T-061: Real PS-Relevant Biomedical Complexity Benchmark
-- **Status:** NEXT
+- **Status:** VERIFIED
 - **Goal:** Test whether the relative behaviour of classical and quantum learning changes across real biomedical disease-classification problems with different measurable data characteristics.
 - **Datasets:** WDBC (569 samples, diagnostic classification), UCI Parkinson's (high-dimensional, ~754 features).
 - **Protocol:** Strict validation, leakage-safe preprocessing, strong classical baselines vs canonical VQC.
 
 ### T-062: Evidence-driven quantum pathway selection
-- **Status:** PLANNED
+- **Status:** NEXT
 - **Description:** Do not automatically implement before T-061 provides sufficient evidence.
 
 ### T-063: Potential specialist/residual/uncertainty-aware hybrid architecture

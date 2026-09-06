@@ -18,9 +18,11 @@
       "backend_core_dataset",
       "backend_core_dataset_dataset",
       "backend_core_dataset_datasetmanager",
+      "backend_core_dataset_datasetmanager_load_parkinsons",
       "backend_core_dataset_datasetmanager_load_wdbc",
-      "backend_core_dataset_rationale_14",
-      "backend_core_dataset_rationale_20",
+      "backend_core_dataset_rationale_17",
+      "backend_core_dataset_rationale_23",
+      "backend_core_dataset_rationale_53",
       "backend_core_evaluation",
       "backend_core_evaluation_evaluationengine",
       "backend_core_evaluation_evaluationengine_compute_specificity",
@@ -34,7 +36,6 @@
       "backend_core_experiment_runner_experimentrunner_run",
       "backend_core_experiment_runner_experimentrunner_store_results",
       "backend_core_experiment_runner_experimentrunner_update_log",
-      "backend_core_models",
       "backend_core_models_modelfactory",
       "backend_core_models_modelfactory_create_classical_model",
       "backend_core_models_py_any",
@@ -65,7 +66,14 @@
       "backend_tests_test_synthetic_generator_test_complexity_profiler_output",
       "backend_tests_test_synthetic_generator_test_synthetic_generator_determinism",
       "backend_tests_test_synthetic_generator_test_synthetic_generator_dimensions",
+      "backend_tests_test_t061_parkinsons",
+      "backend_tests_test_t061_parkinsons_py_patch",
+      "backend_tests_test_t061_parkinsons_rationale_11",
+      "backend_tests_test_t061_parkinsons_rationale_33",
+      "backend_tests_test_t061_parkinsons_test_parkinsons_cv_overlap_mocked",
+      "backend_tests_test_t061_parkinsons_test_parkinsons_load_and_validate",
       "basemodel",
+      "experimentconfig",
       "pipeline",
       "scripts_run_ablation",
       "scripts_run_ablation_run_config",
@@ -74,9 +82,140 @@
       "scripts_run_ablation_stage_c",
       "scripts_run_ablation_stage_d",
       "scripts_run_complexity_benchmark",
-      "scripts_run_complexity_benchmark_run_benchmark"
+      "scripts_run_complexity_benchmark_run_benchmark",
+      "scripts_run_t061_benchmark",
+      "scripts_run_t061_benchmark_run_benchmark",
+      "skipif"
     ],
     "1": [
+      "docs_sih_26139_current_approach",
+      "docs_sih_26139_current_approach_10_classical_baseline",
+      "docs_sih_26139_current_approach_11_quantum_baseline",
+      "docs_sih_26139_current_approach_12_wdbc_experimental_results",
+      "docs_sih_26139_current_approach_13_quantum_ablation_strategy",
+      "docs_sih_26139_current_approach_14_complexity_profiler",
+      "docs_sih_26139_current_approach_15_planned_system_architecture",
+      "docs_sih_26139_current_approach_16_planned_platform_modules",
+      "docs_sih_26139_current_approach_17_evidence_driven_quantum_routing",
+      "docs_sih_26139_current_approach_18_potential_future_research_directions",
+      "docs_sih_26139_current_approach_19_scientific_guardrails",
+      "docs_sih_26139_current_approach_1_strategic_objective",
+      "docs_sih_26139_current_approach_20_reproducibility_requirements",
+      "docs_sih_26139_current_approach_21_current_engineering_state",
+      "docs_sih_26139_current_approach_22_current_task_order",
+      "docs_sih_26139_current_approach_23_sih_demonstration_strategy",
+      "docs_sih_26139_current_approach_24_final_product_positioning",
+      "docs_sih_26139_current_approach_2_core_interpretation_of_the_problem_statement",
+      "docs_sih_26139_current_approach_3_central_research_hypothesis",
+      "docs_sih_26139_current_approach_4_key_differentiation",
+      "docs_sih_26139_current_approach_5_current_experimental_strategy",
+      "docs_sih_26139_current_approach_6_t_060_complexity_benchmark",
+      "docs_sih_26139_current_approach_7_canonical_t_060_validation",
+      "docs_sih_26139_current_approach_8_real_biomedical_data_strategy",
+      "docs_sih_26139_current_approach_9_real_research_question",
+      "docs_sih_26139_current_approach_a_complexity_aware_pathway_selection",
+      "docs_sih_26139_current_approach_b_quantum_specialist_residual_pathway",
+      "docs_sih_26139_current_approach_c_multi_objective_quantum_utility",
+      "docs_sih_26139_current_approach_classical_models",
+      "docs_sih_26139_current_approach_complexity_profiler",
+      "docs_sih_26139_current_approach_configuration",
+      "docs_sih_26139_current_approach_critical_framing",
+      "docs_sih_26139_current_approach_current_canonical_design",
+      "docs_sih_26139_current_approach_current_data_ladder",
+      "docs_sih_26139_current_approach_current_evidence",
+      "docs_sih_26139_current_approach_d_noise_aware_evaluation",
+      "docs_sih_26139_current_approach_data_manager",
+      "docs_sih_26139_current_approach_dataset_1_wdbc",
+      "docs_sih_26139_current_approach_dataset_2_parkinson_s_disease_classification",
+      "docs_sih_26139_current_approach_e_real_hardware_compatibility",
+      "docs_sih_26139_current_approach_experiment_runner",
+      "docs_sih_26139_current_approach_explainability_engine",
+      "docs_sih_26139_current_approach_important_limitation",
+      "docs_sih_26139_current_approach_important_methodological_caveat",
+      "docs_sih_26139_current_approach_initial_benchmark",
+      "docs_sih_26139_current_approach_metrics_engine",
+      "docs_sih_26139_current_approach_never_claim",
+      "docs_sih_26139_current_approach_our_interpretation",
+      "docs_sih_26139_current_approach_potential_dataset_3_high_dimensional_omics",
+      "docs_sih_26139_current_approach_preprocessor",
+      "docs_sih_26139_current_approach_primary_hypothesis",
+      "docs_sih_26139_current_approach_project",
+      "docs_sih_26139_current_approach_quantum_models",
+      "docs_sih_26139_current_approach_required_language",
+      "docs_sih_26139_current_approach_results_store",
+      "docs_sih_26139_current_approach_selected_configuration",
+      "docs_sih_26139_current_approach_sih_2026_ps_26139_current_research_implementation_approach",
+      "docs_sih_26139_current_approach_stage_a_controlled_complexity_experiments",
+      "docs_sih_26139_current_approach_status",
+      "docs_sih_26139_current_approach_t_060",
+      "docs_sih_26139_current_approach_t_061",
+      "docs_sih_26139_current_approach_t_062",
+      "docs_sih_26139_current_approach_t_063",
+      "docs_sih_26139_current_approach_why_this_matters",
+      "docs_sih_26139_current_approach_winning_hierarchy"
+    ],
+    "2": [
+      "agents",
+      "project_state",
+      "project_state_active_task",
+      "project_state_blocked_tasks",
+      "project_state_session_handoff_next_agent_instructions",
+      "project_state_sih_26139_hybrid_qml_platform",
+      "tasks",
+      "tasks_deferred_future_work",
+      "tasks_milestone_04_quantum_suitability_complexity_benchmarking",
+      "tasks_phase_0_workspace_infrastructure",
+      "tasks_phase_10_quality_documentation",
+      "tasks_phase_1_environment_dependencies",
+      "tasks_phase_2_data_preprocessing",
+      "tasks_phase_3_classical_ml",
+      "tasks_phase_4_quantum_ml",
+      "tasks_phase_5_explainability",
+      "tasks_phase_6_experiment_runner_results_store",
+      "tasks_phase_7_api",
+      "tasks_phase_8_frontend_dashboard",
+      "tasks_phase_9_integration_demo",
+      "tasks_sih_26139_hybrid_qml_platform",
+      "tasks_t_000_agentic_workspace_setup",
+      "tasks_t_001_gitignore_readme_md",
+      "tasks_t_010_python_environment_resolution",
+      "tasks_t_011_backend_project_skeleton",
+      "tasks_t_012_frontend_project_skeleton",
+      "tasks_t_020_datasetmanager_wdbc_loader",
+      "tasks_t_021_preprocessingengine_leakage_safe_scaler_pca",
+      "tasks_t_030_classicalmodelengine_svm_rf_xgboost",
+      "tasks_t_031_evaluationengine_metrics_computation",
+      "tasks_t_032_first_classical_baseline_experiment",
+      "tasks_t_040_quantummodelengine_abstract_interface",
+      "tasks_t_041_pennylane_vqc_implementation",
+      "tasks_t_042_vqc_experiment_first_benchmark",
+      "tasks_t_050_explainabilityengine_shap_for_classical",
+      "tasks_t_051_explainabilityengine_input_attribution_for_vqc",
+      "tasks_t_060_complexity_regime_benchmark_engine",
+      "tasks_t_060_experimentrunner_orchestration",
+      "tasks_t_060a__experimentrunner___orc",
+      "tasks_t_061_real_ps_relevant_biomedical_complexity_benchmark",
+      "tasks_t_061a_resultsstore_json_persistence",
+      "tasks_t_062_evidence_driven_quantum_pathway_selection",
+      "tasks_t_063_potential_specialist_residual_uncertainty_aware_hybrid_architecture",
+      "tasks_t_064_sih_prototype_integration_visual_demonstration",
+      "tasks_t_065_hostile_judge_evaluation_final_scientific_audit",
+      "tasks_t_070_fastapi_application",
+      "tasks_t_080_react_dashboard_scaffold",
+      "tasks_t_081_results_comparison_table",
+      "tasks_t_082_roc_curve_confusion_matrix_visualizations",
+      "tasks_t_083_shap_plots_explainability_panel",
+      "tasks_t_084_experiment_metadata_reproducibility_panel",
+      "tasks_t_090_docker_compose_setup",
+      "tasks_t_091_end_to_end_integration_test",
+      "tasks_t_092_demo_pre_training_cache",
+      "tasks_t_100_unit_test_suite",
+      "tasks_t_101_integration_test_suite",
+      "tasks_t_102_multi_seed_experiment_mean_std_reporting",
+      "tasks_t_103_qsvm_quantum_kernel_fallback_implementation",
+      "tasks_tasks_md_task_registry"
+    ],
+    "3": [
       "docs_project_knowledge",
       "docs_project_knowledge_10_explainability_strategy",
       "docs_project_knowledge_11_software_architecture",
@@ -124,7 +263,54 @@
       "docs_project_knowledge_team_chai_exe_barak_valley_engineering_college_egreen_quanta",
       "docs_project_knowledge_vqc_architecture"
     ],
-    "2": [
+    "4": [
+      "backend_core_models",
+      "backend_quantum_pennylane_vqc",
+      "backend_quantum_pennylane_vqc_pennylanevqc",
+      "backend_quantum_pennylane_vqc_pennylanevqc_cost",
+      "backend_quantum_pennylane_vqc_pennylanevqc_fit",
+      "backend_quantum_pennylane_vqc_pennylanevqc_forward",
+      "backend_quantum_pennylane_vqc_pennylanevqc_init",
+      "backend_quantum_pennylane_vqc_pennylanevqc_predict",
+      "backend_quantum_pennylane_vqc_pennylanevqc_predict_proba",
+      "backend_quantum_pennylane_vqc_py_ndarray",
+      "backend_quantum_pennylane_vqc_rationale_6",
+      "backend_tests_test_batching",
+      "backend_tests_test_batching_circuit",
+      "backend_tests_test_benchmark_gpu",
+      "backend_tests_test_benchmark_gpu_py_patch",
+      "backend_tests_test_benchmark_gpu_test_benchmark_runner",
+      "backend_tests_test_benchmark_gpu_test_sanity_check_mocked",
+      "backend_tests_test_quantum_vqc",
+      "backend_tests_test_quantum_vqc_test_vqc_bce_loss",
+      "backend_tests_test_quantum_vqc_test_vqc_determinism",
+      "backend_tests_test_quantum_vqc_test_vqc_fit_predict",
+      "backend_tests_test_quantum_vqc_test_vqc_initialization_and_forward",
+      "decisions",
+      "decisions_09_graphify_tool_integration",
+      "decisions_decision_10_quantum_framework_selection",
+      "decisions_decision_11_pivot_to_hybrid_quantum_suitability_engine",
+      "decisions_decision_12_sih_strategic_alignment_scientific_gating",
+      "decisions_decision_claims_firewall",
+      "decisions_decision_data_split_strategy",
+      "decisions_decision_initial_vqc_configuration",
+      "decisions_decision_preprocessing_leakage_prevention",
+      "decisions_decision_primary_quantum_framework_pennylane",
+      "decisions_decision_python_version_3_12_not_3_14",
+      "decisions_decision_results_persistence_json_files",
+      "decisions_decision_scientific_framing",
+      "decisions_decision_template",
+      "decisions_decision_wdbc_as_pilot_dataset",
+      "decisions_decisions_md_architecture_research_decision_log",
+      "decisions_pending_decisions",
+      "decisions_sih_26139_hybrid_qml_platform",
+      "pennylane",
+      "qnode",
+      "scripts_benchmark_gpu",
+      "scripts_benchmark_gpu_benchmark_realistic_workload",
+      "scripts_benchmark_gpu_sanity_check"
+    ],
+    "5": [
       "docs_experiment_protocol",
       "docs_experiment_protocol_10_verdict_logic",
       "docs_experiment_protocol_11_experiment_flow_diagram",
@@ -165,7 +351,86 @@
       "docs_experiment_protocol_validation_strategy_b_stratified_k_fold_cross_validation",
       "docs_experiment_protocol_xgboost"
     ],
-    "3": [
+    "6": [
+      "docs_sih_26139_ultra_detailed_action_plan",
+      "docs_sih_26139_ultra_detailed_action_plan_11_quantum_feature_encoding",
+      "docs_sih_26139_ultra_detailed_action_plan_12_variational_quantum_circuit",
+      "docs_sih_26139_ultra_detailed_action_plan_15_explainability",
+      "docs_sih_26139_ultra_detailed_action_plan_17_mvp",
+      "docs_sih_26139_ultra_detailed_action_plan_18_ideal_demo_flow",
+      "docs_sih_26139_ultra_detailed_action_plan_1_problem_statement_and_requirements",
+      "docs_sih_26139_ultra_detailed_action_plan_20_risks_and_mitigations",
+      "docs_sih_26139_ultra_detailed_action_plan_21_research_positioning",
+      "docs_sih_26139_ultra_detailed_action_plan_22_what_we_can_claim_vs_what_we_cannot_claim",
+      "docs_sih_26139_ultra_detailed_action_plan_26_final_slide_6_message",
+      "docs_sih_26139_ultra_detailed_action_plan_28_final_strategic_position",
+      "docs_sih_26139_ultra_detailed_action_plan_3_pilot_dataset_wdbc",
+      "docs_sih_26139_ultra_detailed_action_plan_4_proposed_system_architecture",
+      "docs_sih_26139_ultra_detailed_action_plan_6_model_matrix",
+      "docs_sih_26139_ultra_detailed_action_plan_7_why_hybrid_rather_than_pure_quantum",
+      "docs_sih_26139_ultra_detailed_action_plan_9_data_preprocessing",
+      "docs_sih_26139_ultra_detailed_action_plan_classical_models",
+      "docs_sih_26139_ultra_detailed_action_plan_data_leakage_rule",
+      "docs_sih_26139_ultra_detailed_action_plan_dataset_specification",
+      "docs_sih_26139_ultra_detailed_action_plan_expanded_architecture",
+      "docs_sih_26139_ultra_detailed_action_plan_important_limitation",
+      "docs_sih_26139_ultra_detailed_action_plan_primary_pipeline",
+      "docs_sih_26139_ultra_detailed_action_plan_proposed_constraints",
+      "docs_sih_26139_ultra_detailed_action_plan_proposed_dashboard",
+      "docs_sih_26139_ultra_detailed_action_plan_quantum_model",
+      "docs_sih_26139_ultra_detailed_action_plan_references",
+      "docs_sih_26139_ultra_detailed_action_plan_required_capabilities",
+      "docs_sih_26139_ultra_detailed_action_plan_required_steps",
+      "docs_sih_26139_ultra_detailed_action_plan_requirement",
+      "docs_sih_26139_ultra_detailed_action_plan_sih_26139_ultra_detailed_execution_action_plan",
+      "docs_sih_26139_ultra_detailed_action_plan_stage_1",
+      "docs_sih_26139_ultra_detailed_action_plan_stage_2",
+      "docs_sih_26139_ultra_detailed_action_plan_stage_3",
+      "docs_sih_26139_ultra_detailed_action_plan_stage_4",
+      "docs_sih_26139_ultra_detailed_action_plan_stage_5",
+      "docs_sih_26139_ultra_detailed_action_plan_stage_6",
+      "docs_sih_26139_ultra_detailed_action_plan_stage_7"
+    ],
+    "7": [
+      "docs_sih_26139_research_work_document",
+      "docs_sih_26139_research_work_document_11_quantum_feature_encoding",
+      "docs_sih_26139_research_work_document_12_variational_quantum_circuit",
+      "docs_sih_26139_research_work_document_15_explainability",
+      "docs_sih_26139_research_work_document_17_mvp",
+      "docs_sih_26139_research_work_document_18_ideal_demo_flow",
+      "docs_sih_26139_research_work_document_19_feasibility",
+      "docs_sih_26139_research_work_document_1_problem_statement_and_requirements",
+      "docs_sih_26139_research_work_document_20_risks_and_mitigations",
+      "docs_sih_26139_research_work_document_21_research_positioning",
+      "docs_sih_26139_research_work_document_22_what_we_can_claim_vs_what_we_cannot_claim",
+      "docs_sih_26139_research_work_document_26_final_slide_6_message",
+      "docs_sih_26139_research_work_document_28_final_strategic_position",
+      "docs_sih_26139_research_work_document_2_core_thesis",
+      "docs_sih_26139_research_work_document_6_model_matrix",
+      "docs_sih_26139_research_work_document_7_why_hybrid_rather_than_pure_quantum",
+      "docs_sih_26139_research_work_document_9_data_preprocessing",
+      "docs_sih_26139_research_work_document_classical_models",
+      "docs_sih_26139_research_work_document_data_leakage_rule",
+      "docs_sih_26139_research_work_document_do_not_sell_quantum_advantage_build_a_platform_that_can_test_it",
+      "docs_sih_26139_research_work_document_proposed_constraints",
+      "docs_sih_26139_research_work_document_proposed_dashboard",
+      "docs_sih_26139_research_work_document_proposed_feasibility_constraints",
+      "docs_sih_26139_research_work_document_quantum_model",
+      "docs_sih_26139_research_work_document_references",
+      "docs_sih_26139_research_work_document_required_capabilities",
+      "docs_sih_26139_research_work_document_required_steps",
+      "docs_sih_26139_research_work_document_requirement",
+      "docs_sih_26139_research_work_document_stage_1",
+      "docs_sih_26139_research_work_document_stage_2",
+      "docs_sih_26139_research_work_document_stage_3",
+      "docs_sih_26139_research_work_document_stage_4",
+      "docs_sih_26139_research_work_document_stage_5",
+      "docs_sih_26139_research_work_document_stage_6",
+      "docs_sih_26139_research_work_document_stage_7",
+      "docs_sih_26139_research_work_document_why_the_mvp_is_feasible",
+      "docs_sih_26139_research_work_document_working_research_hypothesis"
+    ],
+    "8": [
       "agents_engineer",
       "agents_engineer_engineer_agent_protocol",
       "agents_evaluator",
@@ -176,33 +441,34 @@
       "agents_judge_judge_agent_protocol",
       "agents_researcher",
       "agents_researcher_researcher_agent_protocol",
-      "docs_complexity_benchmark_results",
-      "docs_complexity_benchmark_results_1_regime_table_dataset_statistics",
-      "docs_complexity_benchmark_results_2_classical_results_mean_roc_auc",
-      "docs_complexity_benchmark_results_3_vqc_results_variability_mean_roc_auc_across_3_seeds",
-      "docs_complexity_benchmark_results_4_runtime_comparison",
-      "docs_complexity_benchmark_results_5_observations",
-      "docs_complexity_benchmark_results_6_alternative_explanations",
-      "docs_complexity_benchmark_results_7_limitations",
-      "docs_complexity_benchmark_results_8_conclusion_limitations",
-      "docs_complexity_benchmark_results_9_validation_at_canonical_budget_100_iterations",
-      "docs_complexity_benchmark_results_md",
       "docs_project_hierarchy",
       "docs_project_hierarchy_demo",
       "docs_project_hierarchy_experiments",
       "docs_project_hierarchy_research",
       "docs_project_hierarchy_sih_ps_26139_knowledge_graph_root",
       "docs_project_hierarchy_software",
-      "experiment_log",
-      "experiment_log_experiment_complexity_regime_benchmark_t_060",
-      "experiment_log_experiment_log_md_experiment_registry",
-      "experiment_log_experiments",
-      "experiment_log_log_format",
-      "experiment_log_sih_26139_hybrid_qml_platform",
-      "experiment_log_summary_table",
-      "experiment_log_wdbc_role"
+      "docs_software_architecture",
+      "docs_software_architecture_1_design_principles",
+      "docs_software_architecture_2_module_map",
+      "docs_software_architecture_3_10_frontend_dashboard",
+      "docs_software_architecture_3_1_datasetmanager",
+      "docs_software_architecture_3_2_preprocessingengine",
+      "docs_software_architecture_3_3_classicalmodelengine",
+      "docs_software_architecture_3_4_quantummodelengine_abstract_interface",
+      "docs_software_architecture_3_5_experimentrunner",
+      "docs_software_architecture_3_6_evaluationengine",
+      "docs_software_architecture_3_7_explainabilityengine",
+      "docs_software_architecture_3_8_resultsstore",
+      "docs_software_architecture_3_9_api_layer",
+      "docs_software_architecture_3_module_specifications",
+      "docs_software_architecture_4_data_flow_diagram",
+      "docs_software_architecture_5_quantum_layer_replaceability",
+      "docs_software_architecture_6_extensibility_for_new_datasets",
+      "docs_software_architecture_7_reproducibility_guarantee",
+      "docs_software_architecture_sih_26139_software_architecture_design",
+      "docs_software_architecture_team_chai_exe_barak_valley_engineering_college"
     ],
-    "4": [
+    "9": [
       "docs_open_questions",
       "docs_open_questions_category_1_environment_and_infrastructure",
       "docs_open_questions_category_2_quantum_framework",
@@ -235,7 +501,7 @@
       "docs_open_questions_sih_26139_open_questions_and_unresolved_decisions",
       "docs_open_questions_team_chai_exe_barak_valley_engineering_college"
     ],
-    "5": [
+    "10": [
       "docs_claims_ledger",
       "docs_claims_ledger_approved_language_examples",
       "docs_claims_ledger_claim_002_classical_baselines_are_extremely_strong_on_wdbc",
@@ -244,6 +510,7 @@
       "docs_claims_ledger_claim_005_untuned_vqc_underperforms_strong_classical_baselines",
       "docs_claims_ledger_claim_006_optimized_vqc_underperforms_classical_ml_on_wdbc",
       "docs_claims_ledger_claim_007_vqc_dimensionality_trade_off_barren_plateaus",
+      "docs_claims_ledger_claim_008__dataset_dependent_h",
       "docs_claims_ledger_classification_system",
       "docs_claims_ledger_critical_warning_numbers",
       "docs_claims_ledger_current_verified_claim",
@@ -263,7 +530,7 @@
       "docs_claims_ledger_sih_26139_research_claims_classification_ledger",
       "docs_claims_ledger_team_chai_exe_barak_valley_engineering_college"
     ],
-    "6": [
+    "11": [
       "docs_tech_stack",
       "docs_tech_stack_backend",
       "docs_tech_stack_classical_ml_stack",
@@ -291,7 +558,7 @@
       "docs_tech_stack_team_chai_exe_barak_valley_engineering_college",
       "docs_tech_stack_xgboost"
     ],
-    "7": [
+    "12": [
       "docs_demo_specification",
       "docs_demo_specification_1_demo_flow_11_steps",
       "docs_demo_specification_2_judge_q_a_preparation",
@@ -318,150 +585,64 @@
       "docs_demo_specification_step_9_explainability_panel",
       "docs_demo_specification_team_chai_exe_barak_valley_engineering_college"
     ],
-    "8": [
-      "backend_tests_test_batching",
-      "backend_tests_test_batching_circuit",
-      "decisions",
-      "decisions_09_graphify_tool_integration",
-      "decisions_decision_10_quantum_framework_selection",
-      "decisions_decision_11_pivot_to_hybrid_quantum_suitability_engine",
-      "decisions_decision_12_sih_strategic_alignment_scientific_gating",
-      "decisions_decision_claims_firewall",
-      "decisions_decision_data_split_strategy",
-      "decisions_decision_initial_vqc_configuration",
-      "decisions_decision_preprocessing_leakage_prevention",
-      "decisions_decision_primary_quantum_framework_pennylane",
-      "decisions_decision_python_version_3_12_not_3_14",
-      "decisions_decision_results_persistence_json_files",
-      "decisions_decision_scientific_framing",
-      "decisions_decision_template",
-      "decisions_decision_wdbc_as_pilot_dataset",
-      "decisions_decisions_md_architecture_research_decision_log",
-      "decisions_pending_decisions",
-      "decisions_sih_26139_hybrid_qml_platform",
-      "pennylane",
-      "qnode"
-    ],
-    "9": [
-      "docs_software_architecture",
-      "docs_software_architecture_1_design_principles",
-      "docs_software_architecture_2_module_map",
-      "docs_software_architecture_3_10_frontend_dashboard",
-      "docs_software_architecture_3_1_datasetmanager",
-      "docs_software_architecture_3_2_preprocessingengine",
-      "docs_software_architecture_3_3_classicalmodelengine",
-      "docs_software_architecture_3_4_quantummodelengine_abstract_interface",
-      "docs_software_architecture_3_5_experimentrunner",
-      "docs_software_architecture_3_6_evaluationengine",
-      "docs_software_architecture_3_7_explainabilityengine",
-      "docs_software_architecture_3_8_resultsstore",
-      "docs_software_architecture_3_9_api_layer",
-      "docs_software_architecture_3_module_specifications",
-      "docs_software_architecture_4_data_flow_diagram",
-      "docs_software_architecture_5_quantum_layer_replaceability",
-      "docs_software_architecture_6_extensibility_for_new_datasets",
-      "docs_software_architecture_7_reproducibility_guarantee",
-      "docs_software_architecture_sih_26139_software_architecture_design",
-      "docs_software_architecture_team_chai_exe_barak_valley_engineering_college"
-    ],
-    "10": [
-      "agents",
-      "agents_0_project_identity_30_second_brief",
-      "agents_0_strategic_objective_winning_filter",
-      "agents_1_mandatory_session_protocol",
-      "agents_2_task_lifecycle_state_machine",
-      "agents_3_git_commit_convention",
-      "agents_4_directory_layout",
-      "agents_5_specialized_agent_invocation",
-      "agents_6_critical_scientific_rules_non_negotiable",
-      "agents_7_environment_rules",
-      "agents_agents_md_agentic_development_operating_system",
-      "agents_sih_26139_hybrid_qml_platform_for_early_disease_detection",
-      "agents_team_chai_exe_barak_valley_engineering_college_egreen_quanta",
-      "project_state",
-      "project_state_active_task",
-      "project_state_blocked_tasks",
-      "project_state_session_handoff_next_agent_instructions",
-      "project_state_sih_26139_hybrid_qml_platform",
-      "tasks"
-    ],
-    "11": [
-      "docs_sih_26139_research_work_document",
-      "docs_sih_26139_research_work_document_11_quantum_feature_encoding",
-      "docs_sih_26139_research_work_document_12_variational_quantum_circuit",
-      "docs_sih_26139_research_work_document_18_ideal_demo_flow",
-      "docs_sih_26139_research_work_document_19_feasibility",
-      "docs_sih_26139_research_work_document_1_problem_statement_and_requirements",
-      "docs_sih_26139_research_work_document_20_risks_and_mitigations",
-      "docs_sih_26139_research_work_document_21_research_positioning",
-      "docs_sih_26139_research_work_document_22_what_we_can_claim_vs_what_we_cannot_claim",
-      "docs_sih_26139_research_work_document_26_final_slide_6_message",
-      "docs_sih_26139_research_work_document_28_final_strategic_position",
-      "docs_sih_26139_research_work_document_6_model_matrix",
-      "docs_sih_26139_research_work_document_7_why_hybrid_rather_than_pure_quantum",
-      "docs_sih_26139_research_work_document_proposed_constraints",
-      "docs_sih_26139_research_work_document_proposed_feasibility_constraints",
-      "docs_sih_26139_research_work_document_references",
-      "docs_sih_26139_research_work_document_required_capabilities",
-      "docs_sih_26139_research_work_document_requirement",
-      "docs_sih_26139_research_work_document_why_the_mvp_is_feasible"
-    ],
-    "12": [
-      "docs_sih_26139_current_approach",
-      "docs_sih_26139_current_approach_10_classical_baseline",
-      "docs_sih_26139_current_approach_12_wdbc_experimental_results",
-      "docs_sih_26139_current_approach_14_complexity_profiler",
-      "docs_sih_26139_current_approach_15_planned_system_architecture",
-      "docs_sih_26139_current_approach_17_evidence_driven_quantum_routing",
-      "docs_sih_26139_current_approach_20_reproducibility_requirements",
-      "docs_sih_26139_current_approach_21_current_engineering_state",
-      "docs_sih_26139_current_approach_23_sih_demonstration_strategy",
-      "docs_sih_26139_current_approach_24_final_product_positioning",
-      "docs_sih_26139_current_approach_2_core_interpretation_of_the_problem_statement",
-      "docs_sih_26139_current_approach_4_key_differentiation",
-      "docs_sih_26139_current_approach_9_real_research_question",
-      "docs_sih_26139_current_approach_our_interpretation",
-      "docs_sih_26139_current_approach_project",
-      "docs_sih_26139_current_approach_sih_2026_ps_26139_current_research_implementation_approach",
-      "docs_sih_26139_current_approach_why_this_matters"
-    ],
     "13": [
-      "docs_sih_26139_ultra_detailed_action_plan",
-      "docs_sih_26139_ultra_detailed_action_plan_11_quantum_feature_encoding",
-      "docs_sih_26139_ultra_detailed_action_plan_12_variational_quantum_circuit",
-      "docs_sih_26139_ultra_detailed_action_plan_18_ideal_demo_flow",
-      "docs_sih_26139_ultra_detailed_action_plan_1_problem_statement_and_requirements",
-      "docs_sih_26139_ultra_detailed_action_plan_20_risks_and_mitigations",
-      "docs_sih_26139_ultra_detailed_action_plan_21_research_positioning",
-      "docs_sih_26139_ultra_detailed_action_plan_22_what_we_can_claim_vs_what_we_cannot_claim",
-      "docs_sih_26139_ultra_detailed_action_plan_26_final_slide_6_message",
-      "docs_sih_26139_ultra_detailed_action_plan_28_final_strategic_position",
-      "docs_sih_26139_ultra_detailed_action_plan_6_model_matrix",
-      "docs_sih_26139_ultra_detailed_action_plan_7_why_hybrid_rather_than_pure_quantum",
-      "docs_sih_26139_ultra_detailed_action_plan_proposed_constraints",
-      "docs_sih_26139_ultra_detailed_action_plan_references",
-      "docs_sih_26139_ultra_detailed_action_plan_required_capabilities",
-      "docs_sih_26139_ultra_detailed_action_plan_requirement",
-      "docs_sih_26139_ultra_detailed_action_plan_sih_26139_ultra_detailed_execution_action_plan"
+      "docs_complexity_benchmark_results",
+      "docs_complexity_benchmark_results_1_regime_table_dataset_statistics",
+      "docs_complexity_benchmark_results_2_classical_results_mean_roc_auc",
+      "docs_complexity_benchmark_results_3_vqc_results_variability_mean_roc_auc_across_3_seeds",
+      "docs_complexity_benchmark_results_4_runtime_comparison",
+      "docs_complexity_benchmark_results_5_observations",
+      "docs_complexity_benchmark_results_6_alternative_explanations",
+      "docs_complexity_benchmark_results_7_limitations",
+      "docs_complexity_benchmark_results_8_conclusion_limitations",
+      "docs_complexity_benchmark_results_9_validation_at_canonical_budget_100_iterations",
+      "docs_complexity_benchmark_results_md",
+      "experiment_log",
+      "experiment_log_exp_nnn___short_title_",
+      "experiment_log_experiment_complexity_regime_benchmark_t_060",
+      "experiment_log_experiment_log_md_experiment_registry",
+      "experiment_log_experiments",
+      "experiment_log_log_format",
+      "experiment_log_sih_26139_hybrid_qml_platform",
+      "experiment_log_summary_table",
+      "experiment_log_wdbc_role"
     ],
     "14": [
-      "backend_quantum_pennylane_vqc",
-      "backend_quantum_pennylane_vqc_pennylanevqc",
-      "backend_quantum_pennylane_vqc_pennylanevqc_cost",
-      "backend_quantum_pennylane_vqc_pennylanevqc_fit",
-      "backend_quantum_pennylane_vqc_pennylanevqc_forward",
-      "backend_quantum_pennylane_vqc_pennylanevqc_init",
-      "backend_quantum_pennylane_vqc_pennylanevqc_predict",
-      "backend_quantum_pennylane_vqc_pennylanevqc_predict_proba",
-      "backend_quantum_pennylane_vqc_py_ndarray",
-      "backend_quantum_pennylane_vqc_rationale_6",
-      "backend_tests_test_quantum_vqc",
-      "backend_tests_test_quantum_vqc_test_vqc_bce_loss",
-      "backend_tests_test_quantum_vqc_test_vqc_determinism",
-      "backend_tests_test_quantum_vqc_test_vqc_fit_predict",
-      "backend_tests_test_quantum_vqc_test_vqc_initialization_and_forward"
+      "agents_session_protocol",
+      "agents_session_protocol_add_new_dependency",
+      "agents_session_protocol_check_health",
+      "agents_session_protocol_environment_quick_reference",
+      "agents_session_protocol_handoff_template",
+      "agents_session_protocol_last_session_handoff___yyyy_mm",
+      "agents_session_protocol_run_full_experiment__from_back",
+      "agents_session_protocol_run_tests",
+      "agents_session_protocol_session_end_checklist",
+      "agents_session_protocol_session_protocol_md_session_start_end_checklist",
+      "agents_session_protocol_session_start_checklist",
+      "agents_session_protocol_sih_26139_hybrid_qml_platform",
+      "agents_session_protocol_start_api__development_",
+      "agents_session_protocol_start_frontend__development_",
+      "agents_session_protocol_sync_environment_from_uv_lock",
+      "agents_session_protocol_task_id_quick_reference"
     ],
     "15": [
+      "readme",
+      "readme_1_read_the_operating_system",
+      "readme_2_set_up_environment",
+      "readme_3_check_health",
+      "readme_4_run_tests",
+      "readme_core_architecture_proposed",
+      "readme_directory_structure",
+      "readme_disclaimer",
+      "readme_ensure_uv_is_installed__then_r",
+      "readme_literature_foundation",
+      "readme_project_framing",
+      "readme_quick_start_for_a_fresh_agent_or_developer",
+      "readme_scientific_claims_policy",
+      "readme_sih_26139_hybrid_quantum_machine_learning_platform_for_early_disease_detection",
+      "readme_we_use__uv__as_the_canonical_e"
+    ],
+    "16": [
       "docs_milestone_04_research_direction",
       "docs_milestone_04_research_direction_10_risks_of_scientific_leakage_biased_evaluation",
       "docs_milestone_04_research_direction_11_exact_next_implementation_milestone",
@@ -476,7 +657,7 @@
       "docs_milestone_04_research_direction_9_proposed_experiment_roadmap",
       "docs_milestone_04_research_direction_milestone_04_research_direction_pivot"
     ],
-    "16": [
+    "17": [
       "docs_sih_26139_research_work_document_0_30_minutes",
       "docs_sih_26139_research_work_document_115_140_minutes",
       "docs_sih_26139_research_work_document_140_165_minutes",
@@ -491,7 +672,7 @@
       "docs_sih_26139_research_work_document_lock_the_research_spec",
       "docs_sih_26139_research_work_document_visual_cleanup"
     ],
-    "17": [
+    "18": [
       "docs_sih_26139_ultra_detailed_action_plan_0_30_minutes",
       "docs_sih_26139_ultra_detailed_action_plan_115_140_minutes",
       "docs_sih_26139_ultra_detailed_action_plan_140_165_minutes",
@@ -506,22 +687,21 @@
       "docs_sih_26139_ultra_detailed_action_plan_lock_the_research_spec",
       "docs_sih_26139_ultra_detailed_action_plan_visual_cleanup"
     ],
-    "18": [
-      "readme",
-      "readme_1_read_the_operating_system",
-      "readme_2_set_up_environment",
-      "readme_3_check_health",
-      "readme_4_run_tests",
-      "readme_core_architecture_proposed",
-      "readme_directory_structure",
-      "readme_disclaimer",
-      "readme_literature_foundation",
-      "readme_project_framing",
-      "readme_quick_start_for_a_fresh_agent_or_developer",
-      "readme_scientific_claims_policy",
-      "readme_sih_26139_hybrid_quantum_machine_learning_platform_for_early_disease_detection"
-    ],
     "19": [
+      "agents_0_project_identity_30_second_brief",
+      "agents_0_strategic_objective_winning_filter",
+      "agents_1_mandatory_session_protocol",
+      "agents_2_task_lifecycle_state_machine",
+      "agents_3_git_commit_convention",
+      "agents_4_directory_layout",
+      "agents_5_specialized_agent_invocation",
+      "agents_6_critical_scientific_rules_non_negotiable",
+      "agents_7_environment_rules",
+      "agents_agents_md_agentic_development_operating_system",
+      "agents_sih_26139_hybrid_qml_platform_for_early_disease_detection",
+      "agents_team_chai_exe_barak_valley_engineering_college_egreen_quanta"
+    ],
+    "20": [
       "docs_quantum_findings",
       "docs_quantum_findings_10_what_remains_unresolved",
       "docs_quantum_findings_1_does_vqc_outperform_svm_on_wdbc",
@@ -535,7 +715,7 @@
       "docs_quantum_findings_9_what_can_legitimately_be_claimed",
       "docs_quantum_findings_quantum_optimization_ablation_findings"
     ],
-    "20": [
+    "21": [
       "docs_sih_26139_research_work_document_14_evaluation_metrics",
       "docs_sih_26139_research_work_document_accuracy",
       "docs_sih_26139_research_work_document_computational_efficiency",
@@ -548,7 +728,7 @@
       "docs_sih_26139_research_work_document_sensitivity",
       "docs_sih_26139_research_work_document_specificity"
     ],
-    "21": [
+    "22": [
       "docs_sih_26139_ultra_detailed_action_plan_14_evaluation_metrics",
       "docs_sih_26139_ultra_detailed_action_plan_accuracy",
       "docs_sih_26139_ultra_detailed_action_plan_computational_efficiency",
@@ -560,18 +740,6 @@
       "docs_sih_26139_ultra_detailed_action_plan_roc_auc",
       "docs_sih_26139_ultra_detailed_action_plan_sensitivity",
       "docs_sih_26139_ultra_detailed_action_plan_specificity"
-    ],
-    "22": [
-      "docs_sih_26139_current_approach_16_planned_platform_modules",
-      "docs_sih_26139_current_approach_classical_models",
-      "docs_sih_26139_current_approach_complexity_profiler",
-      "docs_sih_26139_current_approach_data_manager",
-      "docs_sih_26139_current_approach_experiment_runner",
-      "docs_sih_26139_current_approach_explainability_engine",
-      "docs_sih_26139_current_approach_metrics_engine",
-      "docs_sih_26139_current_approach_preprocessor",
-      "docs_sih_26139_current_approach_quantum_models",
-      "docs_sih_26139_current_approach_results_store"
     ],
     "23": [
       "docs_vqc_design",
@@ -619,16 +787,6 @@
       "docs_sih_26139_ultra_detailed_action_plan_rule_7_runtime_measurement"
     ],
     "27": [
-      "agents_session_protocol",
-      "agents_session_protocol_environment_quick_reference",
-      "agents_session_protocol_handoff_template",
-      "agents_session_protocol_session_end_checklist",
-      "agents_session_protocol_session_protocol_md_session_start_end_checklist",
-      "agents_session_protocol_session_start_checklist",
-      "agents_session_protocol_sih_26139_hybrid_qml_platform",
-      "agents_session_protocol_task_id_quick_reference"
-    ],
-    "28": [
       "docs_quantum_stack_decision",
       "docs_quantum_stack_decision_advantages_of_pennylane",
       "docs_quantum_stack_decision_alternative_considered_qiskit",
@@ -638,7 +796,7 @@
       "docs_quantum_stack_decision_quantum_stack_decision",
       "docs_quantum_stack_decision_why_selected"
     ],
-    "29": [
+    "28": [
       "docs_sih_26139_research_work_document_16_software_architecture",
       "docs_sih_26139_research_work_document_architectural_separation",
       "docs_sih_26139_research_work_document_backend",
@@ -648,17 +806,7 @@
       "docs_sih_26139_research_work_document_proposed_stack",
       "docs_sih_26139_research_work_document_quantum"
     ],
-    "30": [
-      "docs_sih_26139_research_work_document_17_mvp",
-      "docs_sih_26139_research_work_document_stage_1",
-      "docs_sih_26139_research_work_document_stage_2",
-      "docs_sih_26139_research_work_document_stage_3",
-      "docs_sih_26139_research_work_document_stage_4",
-      "docs_sih_26139_research_work_document_stage_5",
-      "docs_sih_26139_research_work_document_stage_6",
-      "docs_sih_26139_research_work_document_stage_7"
-    ],
-    "31": [
+    "29": [
       "docs_sih_26139_research_work_document_23_ppt_source_of_truth",
       "docs_sih_26139_research_work_document_constraints",
       "docs_sih_26139_research_work_document_mitigations",
@@ -668,7 +816,7 @@
       "docs_sih_26139_research_work_document_slide_3_technical_approach",
       "docs_sih_26139_research_work_document_slide_4_feasibility_viability"
     ],
-    "32": [
+    "30": [
       "docs_sih_26139_ultra_detailed_action_plan_16_software_architecture",
       "docs_sih_26139_ultra_detailed_action_plan_architectural_separation",
       "docs_sih_26139_ultra_detailed_action_plan_backend",
@@ -678,17 +826,7 @@
       "docs_sih_26139_ultra_detailed_action_plan_proposed_stack",
       "docs_sih_26139_ultra_detailed_action_plan_quantum"
     ],
-    "33": [
-      "docs_sih_26139_ultra_detailed_action_plan_17_mvp",
-      "docs_sih_26139_ultra_detailed_action_plan_stage_1",
-      "docs_sih_26139_ultra_detailed_action_plan_stage_2",
-      "docs_sih_26139_ultra_detailed_action_plan_stage_3",
-      "docs_sih_26139_ultra_detailed_action_plan_stage_4",
-      "docs_sih_26139_ultra_detailed_action_plan_stage_5",
-      "docs_sih_26139_ultra_detailed_action_plan_stage_6",
-      "docs_sih_26139_ultra_detailed_action_plan_stage_7"
-    ],
-    "34": [
+    "31": [
       "docs_sih_26139_ultra_detailed_action_plan_23_ppt_source_of_truth",
       "docs_sih_26139_ultra_detailed_action_plan_constraints",
       "docs_sih_26139_ultra_detailed_action_plan_mitigations",
@@ -698,17 +836,7 @@
       "docs_sih_26139_ultra_detailed_action_plan_slide_3_technical_approach",
       "docs_sih_26139_ultra_detailed_action_plan_slide_4_feasibility_viability"
     ],
-    "35": [
-      "tasks_deferred_future_work",
-      "tasks_phase_5_explainability",
-      "tasks_phase_7_api",
-      "tasks_sih_26139_hybrid_qml_platform",
-      "tasks_t_050_explainabilityengine_shap_for_classical",
-      "tasks_t_051_explainabilityengine_input_attribution_for_vqc",
-      "tasks_t_070_fastapi_application",
-      "tasks_tasks_md_task_registry"
-    ],
-    "36": [
+    "32": [
       "docs_quantum_baseline_config",
       "docs_quantum_baseline_config_1_environment_specifications",
       "docs_quantum_baseline_config_2_dataset_preprocessing",
@@ -717,32 +845,7 @@
       "docs_quantum_baseline_config_5_noise_and_hardware_future_variables",
       "docs_quantum_baseline_config_canonical_quantum_baseline_configuration"
     ],
-    "37": [
-      "tasks_milestone_04_quantum_suitability_complexity_benchmarking",
-      "tasks_t_060_complexity_regime_benchmark_engine",
-      "tasks_t_061_real_ps_relevant_biomedical_complexity_benchmark",
-      "tasks_t_062_evidence_driven_quantum_pathway_selection",
-      "tasks_t_063_potential_specialist_residual_uncertainty_aware_hybrid_architecture",
-      "tasks_t_064_sih_prototype_integration_visual_demonstration",
-      "tasks_t_065_hostile_judge_evaluation_final_scientific_audit"
-    ],
-    "38": [
-      "docs_sih_26139_current_approach_18_potential_future_research_directions",
-      "docs_sih_26139_current_approach_a_complexity_aware_pathway_selection",
-      "docs_sih_26139_current_approach_b_quantum_specialist_residual_pathway",
-      "docs_sih_26139_current_approach_c_multi_objective_quantum_utility",
-      "docs_sih_26139_current_approach_d_noise_aware_evaluation",
-      "docs_sih_26139_current_approach_e_real_hardware_compatibility"
-    ],
-    "39": [
-      "docs_sih_26139_current_approach_8_real_biomedical_data_strategy",
-      "docs_sih_26139_current_approach_critical_framing",
-      "docs_sih_26139_current_approach_current_data_ladder",
-      "docs_sih_26139_current_approach_dataset_1_wdbc",
-      "docs_sih_26139_current_approach_dataset_2_parkinson_s_disease_classification",
-      "docs_sih_26139_current_approach_potential_dataset_3_high_dimensional_omics"
-    ],
-    "40": [
+    "33": [
       "docs_sih_26139_research_work_document_24_slide_5_impact_benefits",
       "docs_sih_26139_research_work_document_clinicians",
       "docs_sih_26139_research_work_document_healthcare_ai_teams",
@@ -750,7 +853,7 @@
       "docs_sih_26139_research_work_document_patients",
       "docs_sih_26139_research_work_document_researchers"
     ],
-    "41": [
+    "34": [
       "docs_sih_26139_research_work_document_25_slide_6_research_references",
       "docs_sih_26139_research_work_document_cerezo_et_al_2021",
       "docs_sih_26139_research_work_document_core_references",
@@ -758,7 +861,7 @@
       "docs_sih_26139_research_work_document_havlíček_et_al_2019",
       "docs_sih_26139_research_work_document_wdbc_dataset"
     ],
-    "42": [
+    "35": [
       "docs_sih_26139_research_work_document_5_classical_baseline_architecture",
       "docs_sih_26139_research_work_document_baseline_models",
       "docs_sih_26139_research_work_document_optional_qsvm_quantum_kernel",
@@ -766,7 +869,7 @@
       "docs_sih_26139_research_work_document_svm",
       "docs_sih_26139_research_work_document_xgboost"
     ],
-    "43": [
+    "36": [
       "docs_sih_26139_ultra_detailed_action_plan_24_slide_5_impact_benefits",
       "docs_sih_26139_ultra_detailed_action_plan_clinicians",
       "docs_sih_26139_ultra_detailed_action_plan_healthcare_ai_teams",
@@ -774,7 +877,7 @@
       "docs_sih_26139_ultra_detailed_action_plan_patients",
       "docs_sih_26139_ultra_detailed_action_plan_researchers"
     ],
-    "44": [
+    "37": [
       "docs_sih_26139_ultra_detailed_action_plan_25_slide_6_research_references",
       "docs_sih_26139_ultra_detailed_action_plan_cerezo_et_al_2021",
       "docs_sih_26139_ultra_detailed_action_plan_core_references",
@@ -782,7 +885,7 @@
       "docs_sih_26139_ultra_detailed_action_plan_havlíček_et_al_2019",
       "docs_sih_26139_ultra_detailed_action_plan_wdbc_dataset"
     ],
-    "45": [
+    "38": [
       "docs_sih_26139_ultra_detailed_action_plan_5_classical_baseline_architecture",
       "docs_sih_26139_ultra_detailed_action_plan_baseline_models",
       "docs_sih_26139_ultra_detailed_action_plan_optional_qsvm_quantum_kernel",
@@ -790,7 +893,7 @@
       "docs_sih_26139_ultra_detailed_action_plan_svm",
       "docs_sih_26139_ultra_detailed_action_plan_xgboost"
     ],
-    "46": [
+    "39": [
       "scripts_health_check",
       "scripts_health_check_fail",
       "scripts_health_check_header",
@@ -798,359 +901,205 @@
       "scripts_health_check_sh__entry",
       "scripts_health_check_warn"
     ],
-    "47": [
-      "tasks_phase_8_frontend_dashboard",
-      "tasks_t_080_react_dashboard_scaffold",
-      "tasks_t_081_results_comparison_table",
-      "tasks_t_082_roc_curve_confusion_matrix_visualizations",
-      "tasks_t_083_shap_plots_explainability_panel",
-      "tasks_t_084_experiment_metadata_reproducibility_panel"
-    ],
-    "48": [
+    "40": [
       "docs_research_log_cerezo_2021",
       "docs_research_log_gupta_2025",
       "docs_research_log_havlicek_2019",
       "docs_research_log_vqc",
       "docs_research_log_zzfeaturemap"
     ],
-    "49": [
-      "docs_sih_26139_current_approach_22_current_task_order",
-      "docs_sih_26139_current_approach_t_060",
-      "docs_sih_26139_current_approach_t_061",
-      "docs_sih_26139_current_approach_t_062",
-      "docs_sih_26139_current_approach_t_063"
-    ],
-    "50": [
+    "41": [
       "docs_sih_26139_research_work_document_10_dimensionality_reduction",
       "docs_sih_26139_research_work_document_candidate_methods",
       "docs_sih_26139_research_work_document_feature_selection",
       "docs_sih_26139_research_work_document_pca",
       "docs_sih_26139_research_work_document_working_approach"
     ],
-    "51": [
+    "42": [
       "docs_sih_26139_ultra_detailed_action_plan_10_dimensionality_reduction",
       "docs_sih_26139_ultra_detailed_action_plan_candidate_methods",
       "docs_sih_26139_ultra_detailed_action_plan_feature_selection",
       "docs_sih_26139_ultra_detailed_action_plan_pca",
       "docs_sih_26139_ultra_detailed_action_plan_working_approach"
     ],
-    "52": [
-      "tasks_phase_10_quality_documentation",
-      "tasks_t_100_unit_test_suite",
-      "tasks_t_101_integration_test_suite",
-      "tasks_t_102_multi_seed_experiment_mean_std_reporting",
-      "tasks_t_103_qsvm_quantum_kernel_fallback_implementation"
+    "43": [
+      "gpu_benchmark_report_document",
+      "gpu_benchmark_report_environment",
+      "gpu_benchmark_report_gpu_quantum_simulation_infrast",
+      "gpu_benchmark_report_realistic_workload_configurati",
+      "gpu_benchmark_report_results"
     ],
-    "53": [
+    "44": [
       "docs_research_log_kundu_2025",
       "docs_research_log_mpofu_2025",
       "docs_research_log_prajapati_2025",
       "wdbc_dataset"
     ],
-    "54": [
+    "45": [
       "docs_sih_26139_research_work_document_0_purpose_of_this_document",
       "docs_sih_26139_research_work_document_evidence_rule",
       "docs_sih_26139_research_work_document_research_working_specification",
       "docs_sih_26139_research_work_document_sih_2026_ps_26139"
     ],
-    "55": [
-      "docs_sih_26139_research_work_document_15_explainability",
-      "docs_sih_26139_research_work_document_classical_models",
-      "docs_sih_26139_research_work_document_proposed_dashboard",
-      "docs_sih_26139_research_work_document_quantum_model"
-    ],
-    "56": [
+    "46": [
       "docs_sih_26139_research_work_document_8_proposed_quantum_component",
       "docs_sih_26139_research_work_document_candidate_approach",
       "docs_sih_26139_research_work_document_candidate_pipeline",
       "docs_sih_26139_research_work_document_proposed_operating_range"
     ],
-    "57": [
+    "47": [
       "docs_sih_26139_ultra_detailed_action_plan_0_purpose_of_this_document",
       "docs_sih_26139_ultra_detailed_action_plan_evidence_rule",
       "docs_sih_26139_ultra_detailed_action_plan_research_working_specification",
       "docs_sih_26139_ultra_detailed_action_plan_sih_2026_ps_26139"
     ],
-    "58": [
-      "docs_sih_26139_ultra_detailed_action_plan_15_explainability",
-      "docs_sih_26139_ultra_detailed_action_plan_classical_models",
-      "docs_sih_26139_ultra_detailed_action_plan_proposed_dashboard",
-      "docs_sih_26139_ultra_detailed_action_plan_quantum_model"
-    ],
-    "59": [
+    "48": [
       "docs_sih_26139_ultra_detailed_action_plan_8_proposed_quantum_component",
       "docs_sih_26139_ultra_detailed_action_plan_candidate_approach",
       "docs_sih_26139_ultra_detailed_action_plan_candidate_pipeline",
       "docs_sih_26139_ultra_detailed_action_plan_proposed_operating_range"
     ],
-    "60": [
-      "tasks_phase_1_environment_dependencies",
-      "tasks_t_010_python_environment_resolution",
-      "tasks_t_011_backend_project_skeleton",
-      "tasks_t_012_frontend_project_skeleton"
-    ],
-    "61": [
-      "tasks_phase_3_classical_ml",
-      "tasks_t_030_classicalmodelengine_svm_rf_xgboost",
-      "tasks_t_031_evaluationengine_metrics_computation",
-      "tasks_t_032_first_classical_baseline_experiment"
-    ],
-    "62": [
-      "tasks_phase_4_quantum_ml",
-      "tasks_t_040_quantummodelengine_abstract_interface",
-      "tasks_t_041_pennylane_vqc_implementation",
-      "tasks_t_042_vqc_experiment_first_benchmark"
-    ],
-    "63": [
-      "tasks_phase_9_integration_demo",
-      "tasks_t_090_docker_compose_setup",
-      "tasks_t_091_end_to_end_integration_test",
-      "tasks_t_092_demo_pre_training_cache"
-    ],
-    "64": [
-      "docs_sih_26139_current_approach_11_quantum_baseline",
-      "docs_sih_26139_current_approach_current_canonical_design",
-      "docs_sih_26139_current_approach_current_evidence"
-    ],
-    "65": [
-      "docs_sih_26139_current_approach_13_quantum_ablation_strategy",
-      "docs_sih_26139_current_approach_important_methodological_caveat",
-      "docs_sih_26139_current_approach_selected_configuration"
-    ],
-    "66": [
-      "docs_sih_26139_current_approach_19_scientific_guardrails",
-      "docs_sih_26139_current_approach_never_claim",
-      "docs_sih_26139_current_approach_required_language"
-    ],
-    "67": [
-      "docs_sih_26139_current_approach_5_current_experimental_strategy",
-      "docs_sih_26139_current_approach_important_limitation",
-      "docs_sih_26139_current_approach_stage_a_controlled_complexity_experiments"
-    ],
-    "68": [
-      "docs_sih_26139_current_approach_7_canonical_t_060_validation",
-      "docs_sih_26139_current_approach_configuration",
-      "docs_sih_26139_current_approach_status"
-    ],
-    "69": [
-      "docs_sih_26139_research_work_document_2_core_thesis",
-      "docs_sih_26139_research_work_document_do_not_sell_quantum_advantage_build_a_platform_that_can_test_it",
-      "docs_sih_26139_research_work_document_working_research_hypothesis"
-    ],
-    "70": [
+    "49": [
       "docs_sih_26139_research_work_document_3_pilot_dataset_wdbc",
       "docs_sih_26139_research_work_document_dataset_specification",
       "docs_sih_26139_research_work_document_important_limitation"
     ],
-    "71": [
+    "50": [
       "docs_sih_26139_research_work_document_4_proposed_system_architecture",
       "docs_sih_26139_research_work_document_expanded_architecture",
       "docs_sih_26139_research_work_document_primary_pipeline"
     ],
-    "72": [
-      "docs_sih_26139_research_work_document_9_data_preprocessing",
-      "docs_sih_26139_research_work_document_data_leakage_rule",
-      "docs_sih_26139_research_work_document_required_steps"
-    ],
-    "73": [
+    "51": [
       "docs_sih_26139_ultra_detailed_action_plan_19_feasibility",
       "docs_sih_26139_ultra_detailed_action_plan_proposed_feasibility_constraints",
       "docs_sih_26139_ultra_detailed_action_plan_why_the_mvp_is_feasible"
     ],
-    "74": [
+    "52": [
       "docs_sih_26139_ultra_detailed_action_plan_2_core_thesis",
       "docs_sih_26139_ultra_detailed_action_plan_do_not_sell_quantum_advantage_build_a_platform_that_can_test_it",
       "docs_sih_26139_ultra_detailed_action_plan_working_research_hypothesis"
     ],
-    "75": [
-      "docs_sih_26139_ultra_detailed_action_plan_3_pilot_dataset_wdbc",
-      "docs_sih_26139_ultra_detailed_action_plan_dataset_specification",
-      "docs_sih_26139_ultra_detailed_action_plan_important_limitation"
-    ],
-    "76": [
-      "docs_sih_26139_ultra_detailed_action_plan_4_proposed_system_architecture",
-      "docs_sih_26139_ultra_detailed_action_plan_expanded_architecture",
-      "docs_sih_26139_ultra_detailed_action_plan_primary_pipeline"
-    ],
-    "77": [
-      "docs_sih_26139_ultra_detailed_action_plan_9_data_preprocessing",
-      "docs_sih_26139_ultra_detailed_action_plan_data_leakage_rule",
-      "docs_sih_26139_ultra_detailed_action_plan_required_steps"
-    ],
-    "78": [
-      "tasks_phase_0_workspace_infrastructure",
-      "tasks_t_000_agentic_workspace_setup",
-      "tasks_t_001_gitignore_readme_md"
-    ],
-    "79": [
-      "tasks_phase_2_data_preprocessing",
-      "tasks_t_020_datasetmanager_wdbc_loader",
-      "tasks_t_021_preprocessingengine_leakage_safe_scaler_pca"
-    ],
-    "80": [
-      "tasks_phase_6_experiment_runner_results_store",
-      "tasks_t_060_experimentrunner_orchestration",
-      "tasks_t_061a_resultsstore_json_persistence"
-    ],
-    "81": [
+    "53": [
       "docs_judge_qa_quantum",
       "docs_judge_qa_quantum_sih_judge_q_a_quantum_machine_learning_validity"
     ],
-    "82": [
-      "docs_sih_26139_current_approach_1_strategic_objective",
-      "docs_sih_26139_current_approach_winning_hierarchy"
-    ],
-    "83": [
-      "docs_sih_26139_current_approach_3_central_research_hypothesis",
-      "docs_sih_26139_current_approach_primary_hypothesis"
-    ],
-    "84": [
-      "docs_sih_26139_current_approach_6_t_060_complexity_benchmark",
-      "docs_sih_26139_current_approach_initial_benchmark"
-    ],
-    "85": [
+    "54": [
       "main",
       "main_main"
     ],
-    "86": [
+    "55": [
       "summarize_ablation",
       "summarize_ablation_print_model"
     ],
-    "87": [
+    "56": [
       "backend_core_init"
     ],
-    "88": [
+    "57": [
       "backend_init"
     ],
-    "89": [
+    "58": [
       "backend_quantum_init"
     ],
-    "90": [
+    "59": [
       "backend_tests_init"
     ],
-    "91": [
+    "60": [
       "docs_research_log_pushpanjali_2025"
     ],
-    "92": [
+    "61": [
       "docs_research_log_sammartino_2026"
     ],
-    "93": [
+    "62": [
       "patch_script"
     ],
-    "94": [
+    "63": [
       "pkg_core_program"
     ],
-    "95": [
+    "64": [
       "scripts_generate_plots"
     ],
-    "96": [
+    "65": [
       "summarize_complexity_benchmark"
     ]
   },
   "cohesion": {
-    "0": 0.06368011847463902,
-    "1": 0.043478260869565216,
-    "2": 0.05128205128205128,
-    "3": 0.05714285714285714,
-    "4": 0.06451612903225806,
-    "5": 0.07692307692307693,
-    "6": 0.07692307692307693,
-    "7": 0.08,
-    "8": 0.09090909090909091,
-    "9": 0.1,
-    "10": 0.1111111111111111,
-    "11": 0.10526315789473684,
-    "12": 0.11764705882352941,
-    "13": 0.11764705882352941,
-    "14": 0.22857142857142856,
-    "15": 0.15384615384615385,
-    "16": 0.15384615384615385,
+    "0": 0.05322128851540616,
+    "1": 0.061057692307692306,
+    "2": 0.06312098188194039,
+    "3": 0.043478260869565216,
+    "4": 0.05757575757575758,
+    "5": 0.05128205128205128,
+    "6": 0.08108108108108109,
+    "7": 0.08408408408408409,
+    "8": 0.06190476190476191,
+    "9": 0.10752688172043011,
+    "10": 0.10826210826210826,
+    "11": 0.07692307692307693,
+    "12": 0.13666666666666666,
+    "13": 0.12105263157894737,
+    "14": 0.16666666666666666,
+    "15": 0.23809523809523808,
+    "16": 0.2948717948717949,
     "17": 0.15384615384615385,
     "18": 0.15384615384615385,
     "19": 0.16666666666666666,
-    "20": 0.18181818181818182,
+    "20": 0.3181818181818182,
     "21": 0.18181818181818182,
-    "22": 0.2,
-    "23": 0.2,
-    "24": 0.2222222222222222,
+    "22": 0.18181818181818182,
+    "23": 0.37777777777777777,
+    "24": 0.4166666666666667,
     "25": 0.2222222222222222,
     "26": 0.2222222222222222,
-    "27": 0.25,
+    "27": 0.4642857142857143,
     "28": 0.25,
     "29": 0.25,
     "30": 0.25,
     "31": 0.25,
-    "32": 0.25,
-    "33": 0.25,
-    "34": 0.25,
-    "35": 0.25,
-    "36": 0.2857142857142857,
-    "37": 0.2857142857142857,
+    "32": 0.5238095238095238,
+    "33": 0.3333333333333333,
+    "34": 0.3333333333333333,
+    "35": 0.3333333333333333,
+    "36": 0.3333333333333333,
+    "37": 0.3333333333333333,
     "38": 0.3333333333333333,
-    "39": 0.3333333333333333,
-    "40": 0.3333333333333333,
-    "41": 0.3333333333333333,
-    "42": 0.3333333333333333,
-    "43": 0.3333333333333333,
-    "44": 0.3333333333333333,
-    "45": 0.3333333333333333,
-    "46": 0.6,
-    "47": 0.3333333333333333,
-    "48": 0.4,
-    "49": 0.4,
-    "50": 0.4,
-    "51": 0.4,
-    "52": 0.4,
-    "53": 0.5,
-    "54": 0.5,
-    "55": 0.5,
-    "56": 0.5,
-    "57": 0.5,
-    "58": 0.5,
-    "59": 0.5,
-    "60": 0.5,
-    "61": 0.5,
-    "62": 0.5,
-    "63": 0.5,
-    "64": 0.6666666666666666,
-    "65": 0.6666666666666666,
-    "66": 0.6666666666666666,
-    "67": 0.6666666666666666,
-    "68": 0.6666666666666666,
-    "69": 0.6666666666666666,
-    "70": 0.6666666666666666,
-    "71": 0.6666666666666666,
-    "72": 0.6666666666666666,
-    "73": 0.6666666666666666,
-    "74": 0.6666666666666666,
-    "75": 0.6666666666666666,
-    "76": 0.6666666666666666,
-    "77": 0.6666666666666666,
-    "78": 0.6666666666666666,
-    "79": 0.6666666666666666,
-    "80": 0.6666666666666666,
-    "81": 1.0,
-    "82": 1.0,
-    "83": 1.0,
-    "84": 1.0,
-    "85": 1.0,
-    "86": 1.0,
-    "87": 1.0,
-    "88": 1.0,
-    "89": 1.0,
-    "90": 1.0,
-    "91": 1.0,
-    "92": 1.0,
-    "93": 1.0,
-    "94": 1.0,
-    "95": 1.0,
-    "96": 1.0
+    "39": 0.6,
+    "40": 0.4,
+    "41": 0.4,
+    "42": 0.4,
+    "43": 0.4,
+    "44": 0.5,
+    "45": 0.5,
+    "46": 0.5,
+    "47": 0.5,
+    "48": 0.5,
+    "49": 0.6666666666666666,
+    "50": 0.6666666666666666,
+    "51": 0.6666666666666666,
+    "52": 0.6666666666666666,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0
   },
   "gods": [
     {
       "id": "docs_sih_26139_current_approach_sih_2026_ps_26139_current_research_implementation_approach",
       "label": "SIH 2026 PS 26139: Current Research & Implementation Approach",
       "degree": 26
+    },
+    {
+      "id": "backend_core_dataset_datasetmanager",
+      "label": "DatasetManager",
+      "degree": 17
     },
     {
       "id": "backend_quantum_pennylane_vqc_pennylanevqc",
@@ -1168,24 +1117,9 @@
       "degree": 14
     },
     {
-      "id": "backend_core_config_experimentconfig",
-      "label": "ExperimentConfig",
-      "degree": 13
-    },
-    {
       "id": "decisions_decisions_md_architecture_research_decision_log",
       "label": "DECISIONS.md — Architecture & Research Decision Log",
       "degree": 13
-    },
-    {
-      "id": "backend_core_dataset_datasetmanager",
-      "label": "DatasetManager",
-      "degree": 12
-    },
-    {
-      "id": "backend_core_preprocessing_preprocessingengine",
-      "label": "PreprocessingEngine",
-      "degree": 12
     },
     {
       "id": "docs_milestone_04_research_direction_milestone_04_research_direction_pivot",
@@ -1196,6 +1130,16 @@
       "id": "docs_claims_ledger_approved_language_examples",
       "label": "Approved Language Examples",
       "degree": 12
+    },
+    {
+      "id": "docs_demo_specification_1_demo_flow_11_steps",
+      "label": "1. Demo Flow (11 Steps)",
+      "degree": 12
+    },
+    {
+      "id": "agents_agents_md_agentic_development_operating_system",
+      "label": "AGENTS.md — Agentic Development Operating System",
+      "degree": 11
     }
   ],
   "surprises": [
@@ -1244,22 +1188,37 @@
       "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
     },
     {
-      "source": "run_config()",
-      "target": "ExperimentConfig",
+      "source": "run_benchmark()",
+      "target": "DatasetManager",
       "source_files": [
-        "scripts/run_ablation.py",
-        "backend/core/config.py"
+        "scripts/run_t061_benchmark.py",
+        "backend/core/dataset.py"
       ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "connects across different repos/directories"
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
     }
   ],
   "questions": [
     {
       "type": "bridge_node",
-      "question": "Why does `TASKS.md — Task Registry` connect `TASKS.md — Task Registry` to `MILESTONE 04: Quantum Suitability & Complexity Benchmarking`, `AGENTS.md — Agentic Development Operating System`, `Phase 0 — Workspace & Infrastructure`, `Phase 2 — Data & Preprocessing`, `Phase 6 — Experiment Runner + Results Store`, `Phase 8 — Frontend Dashboard`, `Phase 10 — Quality & Documentation`, `Phase 1 — Environment & Dependencies`, `Phase 3 — Classical ML`, `Phase 4 — Quantum ML`, `Phase 9 — Integration & Demo`?",
-      "why": "High betweenness centrality (0.032) - this node is a cross-community bridge."
+      "question": "Why does `Team Chai.EXE · Barak Valley Engineering College` connect `Community 10` to `Community 9`, `Community 12`?",
+      "why": "High betweenness centrality (0.023) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `SIH 26139 · Hybrid QML Platform` connect `Community 2` to `Community 13`, `Community 14`?",
+      "why": "High betweenness centrality (0.022) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `T-061: Real PS-Relevant Biomedical Complexity Benchmark` connect `Community 2` to `Community 13`?",
+      "why": "High betweenness centrality (0.009) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 6 inferred relationships involving `DatasetManager` (e.g. with `CVExperimentRunner` and `ExperimentRunner`) actually correct?",
+      "why": "`DatasetManager` has 6 INFERRED edges - model-reasoned connections that need verification."
     },
     {
       "type": "verify_inferred",
@@ -1267,29 +1226,14 @@
       "why": "`ExperimentRunner` has 5 INFERRED edges - model-reasoned connections that need verification."
     },
     {
-      "type": "verify_inferred",
-      "question": "Are the 3 inferred relationships involving `ExperimentConfig` (e.g. with `CVExperimentRunner` and `ExperimentRunner`) actually correct?",
-      "why": "`ExperimentConfig` has 3 INFERRED edges - model-reasoned connections that need verification."
-    },
-    {
       "type": "isolated_nodes",
       "question": "What connects `12. Demo Flow`, `14. Known Limitations`, `15. Open Questions` to the rest of the system?",
-      "why": "541 weakly-connected nodes found - possible documentation gaps or missing edges."
+      "why": "215 weakly-connected nodes found - possible documentation gaps or missing edges."
     },
     {
       "type": "low_cohesion",
-      "question": "Should `experiment_runner.py` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.06368011847463902 - nodes in this community are weakly interconnected."
-    },
-    {
-      "type": "low_cohesion",
-      "question": "Should `PROJECT_KNOWLEDGE.md` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.043478260869565216 - nodes in this community are weakly interconnected."
-    },
-    {
-      "type": "low_cohesion",
-      "question": "Should `EXPERIMENT_PROTOCOL.md` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.05128205128205128 - nodes in this community are weakly interconnected."
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.05322128851540616 - nodes in this community are weakly interconnected."
     }
   ]
 }
