@@ -6,7 +6,7 @@ import sys
 import numpy as np
 import sklearn
 import xgboost
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold, StratifiedGroupKFold
 from backend.core.config import ExperimentConfig
 from backend.core.dataset import DatasetManager
 from backend.core.preprocessing import PreprocessingEngine
@@ -18,22 +18,48 @@ class CVExperimentRunner:
         self.config = config
         self.n_splits = n_splits
         
-    def run(self):
+    def run(self, complexity_profile: dict = None):
         print(f"Starting CV Experiment: {self.config.experiment_id} ({self.n_splits}-fold)")
         
         # 1. Dataset
-        dataset = DatasetManager.load_wdbc()
-        
+        if self.config.dataset_name.lower() == "parkinsons":
+            dataset = DatasetManager.load_parkinsons()
+        else:
+            dataset = DatasetManager.load_wdbc()
+            
+        # Determine CV strategy and validate subject leakage constraints
+        if dataset.groups is not None:
+            skf = StratifiedGroupKFold(n_splits=self.n_splits, shuffle=True, random_state=self.config.random_seed)
+            split_gen = list(skf.split(dataset.X, dataset.y, groups=dataset.groups))
+            split_strategy = f"{self.n_splits}-fold_stratified_group_cv"
+            grouping_info = "Sequential 3-recording subject grouping based on dataset provenance"
+        else:
+            skf = StratifiedKFold(n_splits=self.n_splits, shuffle=True, random_state=self.config.random_seed)
+            split_gen = list(skf.split(dataset.X, dataset.y))
+            split_strategy = f"{self.n_splits}-fold_stratified_cv"
+            grouping_info = "None"
+            
         results_out = {
             "experiment_id": self.config.experiment_id,
             "timestamp": datetime.datetime.now().isoformat(),
-            "dataset": "WDBC",
+            "dataset": self.config.dataset_name,
             "dataset_source": dataset.provenance,
-            "split_strategy": f"{self.n_splits}-fold_stratified_cv",
+            "n_samples": dataset.X.shape[0],
+            "raw_features": dataset.X.shape[1],
+            "class_distribution": {str(k): int(v) for k, v in zip(*np.unique(dataset.y, return_counts=True))},
+            "split_strategy": split_strategy,
+            "validation_protocol": split_strategy,
+            "n_splits": self.n_splits,
+            "grouping_information": grouping_info,
             "random_seed": self.config.random_seed,
-            "n_pca_components": self.config.n_pca_components,
-            "preprocessing": "StandardScaler+PCA",
+            "preprocessing_configuration": "StandardScaler+PCA",
+            "pca_configuration": self.config.n_pca_components,
+            "pca_explained_variance": [],
+            "compression_ratio": float(dataset.X.shape[1]) / float(self.config.n_pca_components) if self.config.n_pca_components else 1.0,
+            "complexity_characteristics": complexity_profile or {},
             "models_tested": list(self.config.models.keys()),
+            "classical_model_configuration": {k: v for k, v in self.config.models.items() if k != "vqc"},
+            "vqc_configuration": self.config.models.get("vqc", {}),
             "results": {},
             "software_versions": {
                 "python": sys.version.split()[0],
@@ -51,18 +77,30 @@ class CVExperimentRunner:
                 "pooled_confusion_matrix": {"tn": 0, "fp": 0, "fn": 0, "tp": 0}
             }
             
-        skf = StratifiedKFold(n_splits=self.n_splits, shuffle=True, random_state=self.config.random_seed)
-        
-        for fold, (train_idx, test_idx) in enumerate(skf.split(dataset.X, dataset.y)):
+        for fold, (train_idx, test_idx) in enumerate(split_gen):
             print(f"--- Fold {fold+1}/{self.n_splits} ---")
+            
+            # Subject leakage validation
+            if dataset.groups is not None:
+                train_groups = dataset.groups[train_idx]
+                val_groups = dataset.groups[test_idx]
+                overlap = set(train_groups).intersection(set(val_groups))
+                if overlap:
+                    raise ValueError(f"Subject leakage detected in fold {fold+1}! Overlapping groups: {overlap}")
             
             X_train_raw, X_test_raw = dataset.X[train_idx], dataset.X[test_idx]
             y_train, y_test = dataset.y[train_idx], dataset.y[test_idx]
             
             # Preprocess (Leakage safe) via Pipeline
             pipeline = PreprocessingEngine.build_pipeline(self.config.n_pca_components, self.config.random_seed)
-            X_train = pipeline.fit_transform(X_train_raw)
+            X_train = pipeline.fit_transform(X_train_raw, y_train)
             X_test = pipeline.transform(X_test_raw)
+            
+            # Record PCA explained variance
+            pca_step = pipeline.named_steps.get("pca")
+            if pca_step is not None:
+                evr = float(np.sum(pca_step.explained_variance_ratio_))
+                results_out["pca_explained_variance"].append(evr)
                 
             for model_name, model_params in self.config.models.items():
                 model = ModelFactory.create_classical_model(model_name, model_params)
@@ -76,7 +114,10 @@ class CVExperimentRunner:
                 inf_time = time.perf_counter() - t_start
                 
                 if hasattr(model, "predict_proba"):
-                    y_pred_proba = model.predict_proba(X_test)
+                    try:
+                        y_pred_proba = model.predict_proba(X_test)
+                    except:
+                        y_pred_proba = None
                 else:
                     y_pred_proba = None
                     
@@ -95,7 +136,14 @@ class CVExperimentRunner:
                 results_out["results"][model_name]["pooled_confusion_matrix"]["fn"] += cm["fn"]
                 results_out["results"][model_name]["pooled_confusion_matrix"]["tp"] += cm["tp"]
                 
-        # Compute means and stds
+        # Compute means and stds for PCA EVR
+        if results_out["pca_explained_variance"]:
+            results_out["pca_explained_variance_mean"] = float(np.mean(results_out["pca_explained_variance"]))
+            results_out["pca_explained_variance_std"] = float(np.std(results_out["pca_explained_variance"]))
+            results_out["pca_explained_variance_min"] = float(np.min(results_out["pca_explained_variance"]))
+            results_out["pca_explained_variance_max"] = float(np.max(results_out["pca_explained_variance"]))
+
+        # Compute means and stds for models
         for model_name in self.config.models.keys():
             folds = results_out["results"][model_name]["folds"]
             keys = folds[0].keys()
@@ -106,24 +154,25 @@ class CVExperimentRunner:
                     results_out["results"][model_name]["metrics_mean"][k] = float(np.mean(vals))
                     results_out["results"][model_name]["metrics_std"][k] = float(np.std(vals))
 
-        self._store_results(results_out)
-        self._update_log(results_out)
+        self.store_results(results_out)
+        self.update_log(results_out)
+        return results_out
         
-    def _store_results(self, results_out):
+    def store_results(self, results_out):
         os.makedirs("experiments/results", exist_ok=True)
         out_file = f"experiments/results/{self.config.experiment_id}_{int(time.time())}.json"
         with open(out_file, 'w') as f:
             json.dump(results_out, f, indent=2)
         print(f"Results stored to {out_file}")
         
-    def _update_log(self, results_out):
+    def update_log(self, results_out):
         log_file = "EXPERIMENT_LOG.md"
         with open(log_file, 'a') as f:
             timestamp = results_out["timestamp"]
             exp_id = results_out["experiment_id"]
             seed = results_out["random_seed"]
             models = ", ".join(results_out["models_tested"])
-            f.write(f"| {timestamp[:10]} | {exp_id} | {models} | seed={seed} (5-fold CV) | See {exp_id}_*.json |\n")
+            f.write(f"| {timestamp[:10]} | {exp_id} ({results_out['dataset']}) | {models} | seed={seed} ({self.n_splits}-fold) | See {exp_id}_*.json |\n")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

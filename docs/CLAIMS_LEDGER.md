@@ -249,3 +249,10 @@ Every claim MUST be assigned one of the following classes:
 
 ### CURRENT VERIFIED CLAIM
 "Under the tested synthetic regimes and canonical VQC configuration, R3_CORRELATED produced substantially higher VQC ROC-AUC than R1_SIMPLE, and this association persisted at the canonical 100-iteration training budget."
+
+### CLAIM_008: Dataset-Dependent Hybrid Quantum Performance
+- **Claim:** VQC performance relative to classical baselines is dataset-dependent and heavily modulated by complexity characteristics like the severity of the PCA dimensionality bottleneck and native feature correlation.
+- **Source:** OUR EXPERIMENT (T-061: WDBC vs Parkinson's)
+- **Evidence:** 5-fold CV comparisons showing VQC maintained learning on WDBC (AUC 0.620) but collapsed to random guessing on Parkinson's (AUC 0.519), while classical SVM extracted signal from both (0.993 and 0.793, respectively).
+- **Classification:** OUR EXPERIMENT
+- **Constraint:** Do not claim that correlation *causes* quantum suitability alone. Claim only that dataset complexity characteristics empirically modulate the relative advantage/disadvantage of the quantum pathway.

@@ -1,0 +1,22 @@
+{
+  "experiment_id": "exp_061_parkinsons_sensitivity_pca8",
+  "dataset_name": "Parkinsons",
+  "split_strategy": "stratified_group_cv_5fold",
+  "test_size": 0.2,
+  "random_seed": 42,
+  "n_pca_components": 8,
+  "models": {
+    "vqc": {
+      "n_qubits": 8,
+      "n_layers": 3,
+      "learning_rate": 0.05,
+      "iterations": 100,
+      "random_state": 42,
+      "loss_fn": "mse"
+    },
+    "svm": {
+      "kernel": "linear",
+      "random_state": 42
+    }
+  }
+}
