@@ -14,16 +14,18 @@ class ModelFactory:
     
     @staticmethod
     def create_classical_model(model_name: str, params: Dict[str, Any]) -> Any:
-        if model_name == "svm":
+        base_name = model_name.split('_')[0] if '_' in model_name else model_name
+        
+        if base_name == "svm":
             base_svc = SVC(**params)
             return CalibratedClassifierCV(estimator=base_svc, cv=5, ensemble=False)
-        elif model_name == "random_forest":
+        elif base_name == "random" and model_name.startswith("random_forest"):
             return RandomForestClassifier(**params)
-        elif model_name == "xgboost":
+        elif base_name == "xgboost":
             return XGBClassifier(**params)
-        elif model_name == "qsvm":
+        elif base_name == "qsvm":
             return PennyLaneQSVM(**params)
-        elif model_name == "vqc":
+        elif base_name == "vqc":
             return PennyLaneVQC(**params)
         else:
             raise ValueError(f"Unknown model: {model_name}")

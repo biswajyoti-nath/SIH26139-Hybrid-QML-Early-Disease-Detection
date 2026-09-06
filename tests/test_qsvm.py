@@ -25,3 +25,10 @@ def test_qsvm_fit_predict():
     assert preds.shape == (20,), "Predict shape mismatch"
     probas = model.predict_proba(X)
     assert probas.shape == (20, 2), "Predict proba shape mismatch"
+
+def test_qsvm_encoding_iqp():
+    model = PennyLaneQSVM(n_qubits=4, encoding='iqp')
+    X1 = np.random.random((10, 4))
+    X2 = np.random.random((5, 4))
+    K = model.kernel_matrix(X1, X2)
+    assert K.shape == (10, 5), f"Expected (10, 5), got {K.shape}"

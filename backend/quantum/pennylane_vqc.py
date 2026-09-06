@@ -14,7 +14,8 @@ class PennyLaneVQC:
         learning_rate: float = 0.05, 
         iterations: int = 50,
         random_state: int = 42,
-        loss_fn: str = "mse"
+        loss_fn: str = "mse",
+        encoding: str = "angle"
     ):
         self.n_qubits = n_qubits
         self.n_layers = n_layers
@@ -22,6 +23,7 @@ class PennyLaneVQC:
         self.iterations = iterations
         self.random_state = random_state
         self.loss_fn = loss_fn.lower()
+        self.encoding = encoding
         self.history_ = []
         
         np.random.seed(self.random_state)
@@ -36,8 +38,10 @@ class PennyLaneVQC:
         
         @qml.qnode(self.dev, interface="autograd")
         def _circuit(weights, x):
-            # AngleEmbedding supports 2D arrays directly (batching)
-            qml.AngleEmbedding(x, wires=range(self.n_qubits), rotation='X')
+            if self.encoding == 'iqp':
+                qml.IQPEmbedding(x, wires=range(self.n_qubits))
+            else:
+                qml.AngleEmbedding(x, wires=range(self.n_qubits), rotation='X')
             qml.BasicEntanglerLayers(weights, wires=range(self.n_qubits), rotation=qml.RY)
             return qml.expval(qml.PauliZ(0))
             

@@ -5,10 +5,11 @@ from sklearn.svm import SVC
 from sklearn.calibration import CalibratedClassifierCV
 
 class PennyLaneQSVM:
-    def __init__(self, n_qubits: int = 8, random_state: int = 42, C: float = 1.0):
+    def __init__(self, n_qubits: int = 8, random_state: int = 42, C: float = 1.0, encoding: str = 'angle'):
         self.n_qubits = n_qubits
         self.random_state = random_state
         self.C = C
+        self.encoding = encoding
         
         try:
             self.dev = qml.device("lightning.gpu", wires=self.n_qubits)
@@ -16,9 +17,12 @@ class PennyLaneQSVM:
             self.dev = qml.device("lightning.qubit", wires=self.n_qubits)
             
         def feature_map(x):
-            qml.AngleEmbedding(x, wires=range(self.n_qubits), rotation='X')
+            if self.encoding == 'iqp':
+                qml.IQPEmbedding(x, wires=range(self.n_qubits))
+            else:
+                qml.AngleEmbedding(x, wires=range(self.n_qubits), rotation='X')
             
-        @qml.qnode(self.dev, interface="autograd")
+        @qml.qnode(self.dev, interface=None)
         def _kernel_circuit(x1, x2):
             feature_map(x1)
             qml.adjoint(feature_map)(x2)
@@ -34,13 +38,20 @@ class PennyLaneQSVM:
         M = len(X2)
         gram = std_np.zeros((N, M))
         
+        chunk_size = 64
         for i in range(N):
-            x1_tiled = std_np.tile(X1[i], (M, 1))
-            probs = self.kernel_circuit(x1_tiled, X2)
-            if M == 1:
-                gram[i, :] = float(probs[0])
-            else:
-                gram[i, :] = std_np.array(probs[:, 0])
+            for j in range(0, M, chunk_size):
+                end_j = min(j + chunk_size, M)
+                chunk_len = end_j - j
+                
+                x1_tiled = std_np.tile(X1[i], (chunk_len, 1))
+                x2_chunk = X2[j:end_j]
+                
+                probs = self.kernel_circuit(x1_tiled, x2_chunk)
+                if chunk_len == 1:
+                    gram[i, j:end_j] = float(probs[0])
+                else:
+                    gram[i, j:end_j] = std_np.array(probs[:, 0])
                 
         is_symmetric = (X1 is X2) or (std_np.array_equal(X1, X2))
         if is_symmetric:
