@@ -10,7 +10,7 @@ Design an evidence-driven, mathematical routing framework capable of determining
 - **No Universal Quantum Superiority:** We do not assume quantum models will categorically outperform classical models.
 - **Empiricism Over Heuristics:** We rely on measurable evidence, not arbitrary thresholds (e.g., hardcoded PCA cutoffs).
 - **Correlation is Observational:** Feature correlation and linear separability are candidate variables that correlate with observed model performance; they are not assumed to possess a causal relationship with quantum suitability.
-- **Dimensionality Bottleneck:** Aggressive data compression (PCA) required to fit biomedical datasets into near-term quantum architectures physically destroys information, directly impacting downstream predictive utility.
+- **Dimensionality Bottleneck:** PCA reduces the representation to a lower-dimensional subspace and discards variance outside that subspace. High information loss may indicate a representation bottleneck, but explained variance is NOT equivalent to predictive information.
 
 ## 4. Complexity Feature Vector
 Before model training, a dataset can be described by an unsupervised/supervised descriptive feature vector:
@@ -21,21 +21,21 @@ Where $R_k$ and $L_k$ measure information retention, $C$ measures required compr
 **1. PCA Information Retention ($R_k$)**
 For a dataset requiring reduction to $k$ quantum dimensions:
 $$R_k = \sum_{i=1}^{k} \text{explained\_variance\_ratio}_i$$
+*What it measures:* $R_k$ measures retained global variance. Neither directly measures retained class-discriminative information.
 
 **2. Information Loss ($L_k$)**
 $$L_k = 1 - R_k$$
-*What it measures:* The proportion of dataset variance irretrievably lost before state preparation.
-*What it does NOT measure:* It does not guarantee that the lost variance contained the decision boundary, only that global structural information was discarded.
+*What it measures:* $L_k$ measures discarded global variance. Neither directly measures discarded class-discriminative information.
 
 **3. Compression Ratio ($C$)**
 $$C = \frac{d_{raw}}{k}$$
 where $d_{raw}$ is the original raw feature dimension and $k$ is the quantum representation dimension.
 
 **4. Linear Separability ($S$)**
-Measured via existing classical proxy (e.g., logistic regression baseline margin or intra/inter-class distance). It contributes to routing by profiling whether the dataset inherently requires highly non-linear entanglement.
+Linear separability is a descriptive proxy for the difficulty of a linear decision boundary. It may characterize dataset structure, but it does not establish that a quantum model or entanglement is required.
 
 **5. Feature Correlation ($\rho$)**
-The mean absolute pairwise Pearson correlation of the features. It is strictly an observed descriptive variable, not a proven predictor of quantum suitability.
+The mean absolute pairwise Pearson correlation of the features. It is strictly an observed descriptive variable, not a proven predictor of quantum suitability. No complexity variable establishes a specific quantum mechanism.
 
 ## 6. Classical Reference Model
 The predictive baseline strength, $B_{classical}$, is defined by a highly optimized classical model (e.g., SVM or XGBoost). Routing depends on **relative** utility; hence, evaluating intrinsic quantum performance is meaningless without $B_{classical}$ evaluated strictly under identical cross-validation folds and leakage-safe preprocessing.
@@ -51,40 +51,54 @@ The quantum baseline performance, $B_{quantum}$, is derived from the canonical V
 ## 8. Relative Utility Formulation
 The primary metric for comparative analysis is the predictive delta:
 $$\Delta_Q = B_{quantum} - B_{classical}$$
-A positive $\Delta_Q$ indicates predictive advantage. However, overall utility must incorporate resource cost. 
+A positive $\Delta_Q$ indicates predictive advantage under the evaluated protocol. However, overall utility must incorporate resource cost. 
 
 ## 9. Uncertainty Handling
-Every evaluation produces a variance across the folds (e.g., standard deviation of ROC-AUC).
-Uncertainty $\sigma_{\Delta}$ is incorporated into the routing decision:
-$$\sigma_{\Delta} = \sqrt{\sigma_{quantum}^2 + \sigma_{classical}^2}$$
-Wide variance intervals across folds prevent the system from falsely routing based on statistical noise.
+A simplified approximation of uncertainty assumes independent models:
+$$\sigma_{\Delta} \approx \sqrt{\sigma_{quantum}^2 + \sigma_{classical}^2}$$
+However, because quantum and classical models are evaluated on the same folds, their fold-level estimates are paired and may be correlated. The framework requires a more rigorous future formulation based on fold-wise paired differences:
+
+For fold $j$:
+$$\Delta_j = B_{quantum,j} - B_{classical,j}$$
+
+Then:
+$$\text{mean}(\Delta) = \frac{1}{n} \sum \Delta_j$$
+
+And estimate uncertainty directly from the distribution of $\Delta_j$:
+$$s_{\Delta} = \sqrt{ \frac{1}{n-1} \sum_j (\Delta_j - \text{mean}(\Delta))^2 }$$
+
+The eventual routing decision should use the paired distribution of model differences rather than assuming independent model estimates. Do NOT claim statistical significance until an appropriate statistical test and confidence interval procedure are actually implemented.
 
 ## 10. Evidence States
-The decision function must output one of four states. It must **not** force a binary classical/quantum choice.
-1. **Classical Preferred:** $B_{classical}$ heavily outperforms $B_{quantum}$ outside the margin of error, or $L_k$ is so extreme that $B_{quantum}$ collapses to random guessing.
-2. **Quantum Pathway Promising:** $\Delta_Q > 0$ and is statistically significant across folds.
-3. **Statistically Comparable:** $|\Delta_Q| \approx 0$ (within $\sigma_{\Delta}$). Both pathways offer similar predictive power.
-4. **Inconclusive:** High variance ($\sigma > \text{threshold}$) or contradicting metric indicators (e.g., high AUC but low F1 due to imbalance instability) prevents a confident routing decision.
+The decision function must output one of four states.
+1. **CLASSICAL PREFERRED:** Strong evidence that the classical reference is better under the evaluated protocol and quantum pilot does not justify additional quantum allocation.
+2. **QUANTUM PATHWAY PROMISING:** Quantum performance is better than the classical reference under the evaluated protocol with uncertainty sufficiently supporting the observed advantage.
+3. **STATISTICALLY COMPARABLE:** Observed difference is small relative to uncertainty and there is no sufficient evidence to prefer either pathway. This conceptually requires a pre-specified practical equivalence margin in a future validated implementation.
+4. **INCONCLUSIVE:** Evidence is insufficient because of high variance, unstable metrics, inadequate quantum training, conflicting metrics, insufficient sample size, or other methodological limitations.
 
-## 11. Two-Stage Routing Architecture
+## 11. Evidence-Gated Quantum Pathway Selection
 **Stage 1: Dataset Complexity Profiling**
-Extract $\vec{v} = [R_k, L_k, C, S, \rho]$.
-*Output:* Unsupervised and supervised complexity characteristics.
+Compute descriptive characteristics before supervised benchmarking: $R_k$, $L_k$, $C$, $\rho$, $S$ (where valid).
 
 **Stage 2: Classical Reference Benchmark**
-Run $B_{classical}$ using leakage-safe CV.
-*Output:* Ceiling of predictive task difficulty.
+Evaluate strong classical baselines under leakage-safe CV.
 
-**Stage 3: Quantum Pilot Evaluation**
-Run $B_{quantum}$ on a minimal subset/budget if $L_k$ does not trivially guarantee model collapse.
+**Stage 3: Quantum Pilot Gate**
+Use complexity characteristics and available computational budget only to determine whether a quantum pilot is WORTH TESTING. Low PCA retention may provide an early warning of a severe representation bottleneck and can therefore be investigated as a resource-allocation signal. That is an experimentally testable hypothesis, not a validated rule. *CRITICAL: This gate must NOT claim that it can already predict quantum suitability. It is an EXPERIMENTAL ALLOCATION GATE.*
 
-**Stage 4: Evidence Comparison & Decision**
-Compute $\Delta_Q$ and variance. Route to one of the four Evidence States.
+**Stage 4: Quantum Pilot**
+Evaluate the canonical VQC under matched preprocessing and evaluation conditions.
+
+**Stage 5: Paired Evidence Comparison**
+Compare fold-level quantum and classical results using paired distributions.
+
+**Stage 6: Evidence State**
+Determine state: CLASSICAL PREFERRED, QUANTUM PATHWAY PROMISING, STATISTICALLY COMPARABLE, or INCONCLUSIVE. This distinction is central to the research contribution.
 
 ## 12. Resource-Aware Routing
-A conceptual utility function guides the final routing recommendation:
+A conceptual utility framework guides the final routing recommendation:
 $$Utility = (\text{Predictive Benefit}) - (\text{Computational Cost}) - (\text{Uncertainty Penalty})$$
-*Computational Cost* factors in simulator runtime, qubit scaling, and iteration budget. No arbitrary numerical weights are hardcoded. Future iterations of this framework will calibrate the weights via multi-dataset benchmark evidence.
+*Computational Cost* factors in simulator runtime, qubit scaling, and iteration budget. This is explicitly classified as a conceptual framework. No weights should be selected yet. Future calibration requires multi-dataset empirical evidence.
 
 ## 13. Leakage Prevention
 **Unsupervised vs Supervised Features:**
@@ -93,12 +107,12 @@ $$Utility = (\text{Predictive Benefit}) - (\text{Computational Cost}) - (\text{U
 - Target information must never bleed into the global complexity profiler.
 
 ## 14. Validation Protocol
-T-062 itself will be validated on a matrix of *unseen* biomedical datasets spanning different:
-- Dimensionality ($d_{raw} \in [30, \sim 10000]$)
-- Imbalance ratios
-- Feature correlation regimes
-- PCA variance retention characteristics
-*Evaluation Criteria:* Does the routing protocol reliably predict relative quantum/classical utility out-of-sample?
+T-062 should eventually be evaluated using:
+**TRAINING / CALIBRATION DATASETS** versus **HELD-OUT TEST DATASETS.**
+
+The router must not be judged on the same datasets used to discover its thresholds or weighting. The final scientific question becomes:
+*“Can the routing protocol generalize to previously unseen biomedical datasets?”*
+This requires a future benchmark matrix containing multiple biomedical datasets with different dimensionality, PCA retention, feature correlation, separability, sample size, class imbalance, and quantum compression requirements.
 
 ## 15. Failure Modes
 1. **Dimensionality Curse:** Extremely high $d_{raw}$ (e.g., genomics) forces $C \gg 1$, yielding near 100% information loss ($L_k \to 1$).
@@ -106,28 +120,37 @@ T-062 itself will be validated on a matrix of *unseen* biomedical datasets spann
 3. **Classical Over-optimization:** Imbalanced hyperparameter tuning where classical models are aggressively optimized while the quantum model is restricted to its canonical baseline.
 
 ## 16. Current Evidence from T-060/T-061
-- **T-060:** A reproducible association was found on synthetic data between highly correlated regimes (R3) and improved relative VQC performance.
-- **T-061 (WDBC):** $R_6 \approx 88.8\%$. $B_{quantum} \approx 0.620$ vs $B_{classical} \approx 0.993$.
-- **T-061 (Parkinson's):** $R_6 \approx 41.7\%$. $B_{quantum} \approx 0.519$ vs $B_{classical} \approx 0.793$. The PCA bottleneck severely starves the state preparation, leading to model collapse near random guessing.
+**WDBC:**
+$R_6 \approx 88.8\%$
+$VQC \approx 0.620$ ROC-AUC
+$SVM \approx 0.993$ ROC-AUC
 
-## 17. What is NOT yet proven
-- It is NOT proven that high feature correlation *causes* quantum suitability.
-- It is NOT proven that there exists a universal PCA variance cutoff (e.g., exactly 50%) below which quantum models will always fail.
+**Parkinson's (PCA=6):**
+$R_6 \approx 41.7\%$
+$VQC \approx 0.519$ ROC-AUC
+$SVM \approx 0.793$ ROC-AUC
 
-## 18. Future Benchmark Requirements
-To graduate this framework from theoretical to validated, we require a diverse benchmark repository containing text, tabular, and signal biomedical data of varying dimensionalities.
+**Parkinson's (PCA=8):**
+$R_8 \approx 46.3\%$
+$VQC \approx 0.517$ ROC-AUC
+$SVM \approx 0.815$ ROC-AUC
 
-## 19. Proposed T-062 Acceptance Criteria
-- No arbitrary routing threshold is presented as scientifically validated.
-- No causal claim is made about feature correlation.
-- PCA information retention is treated as a measurable information/compression variable, not proof of quantum suitability.
-- Classical performance is explicitly included.
-- Quantum performance is explicitly included.
-- Uncertainty is explicitly represented.
-- INCONCLUSIVE is a valid output.
-- Resource cost is considered.
-- Validation on unseen biomedical datasets is specified.
-- Leakage prevention is explicitly defined.
-- The protocol remains strictly aligned with SIH PS 26139.
-- The design does not assume quantum superiority.
-- No code is implemented.
+T-061 demonstrates dataset-dependent differences in the observed performance of the tested VQC relative to classical baselines. Parkinson's also exhibits substantially lower PCA variance retention than WDBC under the tested quantum dimensionality. These observations motivate investigation of representation bottlenecks as candidate resource-allocation variables.
+
+## 17. Research Novelty
+The proposed contribution is an evidence-gated framework that integrates biomedical complexity profiling, classical reference benchmarking, quantum pilot evaluation, paired comparative evidence, uncertainty handling, and resource-aware pathway selection within a single hybrid QML platform. Novelty relative to prior literature requires a dedicated literature review.
+
+## 18. Proposed T-062 Acceptance Criteria
+- No causal interpretation of PCA retention.
+- No causal interpretation of feature correlation.
+- No claim that any complexity variable is already a validated quantum-suitability predictor.
+- Fold-level paired comparison is specified.
+- Statistical significance is not claimed before a valid statistical procedure is implemented.
+- Practical equivalence margins are to be empirically calibrated.
+- Router validation uses unseen datasets.
+- Quantum pilot allocation is distinguished from quantum suitability prediction.
+- INCONCLUSIVE remains a first-class outcome.
+- Resource cost is included.
+- The framework remains aligned with PS 26139.
+- No quantum advantage is assumed.
+
