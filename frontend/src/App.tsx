@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Database, Activity, Cpu, Microscope, Clock, ShieldCheck, FileWarning, BarChart4 } from 'lucide-react';
 import './App.css';
 
-const API_BASE = 'http://localhost:8000/api';
+const API_BASE = import.meta.env.BASE_URL + 'api';
 
 function App() {
   const [dataset, setDataset] = useState('wdbc');

@@ -192,6 +192,8 @@ core-program/
 ├── scripts/                    ← Utility scripts
 │   └── health_check.sh         ← Quick environment health check
 │
+├── backend/                    ← [NOT YET CREATED] FastAPI + ML core
+├── frontend/                   ← [NOT YET CREATED] React dashboard
 ├── backend/                    ← FastAPI API and core QML routing engine
 ├── frontend/                   ← React/Vite Dashboard UI
 │
